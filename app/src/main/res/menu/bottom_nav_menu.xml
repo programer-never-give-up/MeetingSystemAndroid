@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tab_home_page"
+        android:icon="@drawable/ic_tab_home"
+        android:title="@string/home"
+        android:enabled="true"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/tab_knowledge_hierarchy"
+        android:icon="@drawable/ic_tab_search"
+        android:title="@string/community"
+        android:enabled="true"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/tab_navigation"
+        android:icon="@drawable/ic_tab_manager"
+        android:title="@string/meeting_manager"
+        android:enabled="true"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/tab_project"
+        android:icon="@drawable/ic_tab_person"
+        android:title="@string/personal_center"
+        android:enabled="true"
+        app:showAsAction="ifRoom"></item>
+</menu>

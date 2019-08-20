@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MeetingSystemAndroid</string>
+    <string name="personal_center">个人中心</string>
+    <string name="home">主页</string>
+    <string name="meeting_manager">会议管理</string>
+    <string name="community">社区</string>
 </resources>

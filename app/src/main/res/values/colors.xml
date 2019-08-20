@@ -3,4 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="toolbar_bg">#EC3F65</color>
+    <color name="nav_item_selected_bg">#E61515</color>
+    <color name="bottom_nav_bg">#fff</color>
 </resources>
