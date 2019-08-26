@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".LoginActivity"
-    android:orientation="vertical">
+    android:background="@mipmap/login_background">
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_above="@id/edit_login_username_layout">
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,13 +23,17 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
-        android:hint="@string/hint_username"
         android:layout_marginBottom="10dp"
+        android:hint="@string/hint_username"
+        android:layout_above="@id/edit_login_password_layout"
+        android:id="@+id/edit_login_username_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_login_username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -37,6 +42,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="10dp"
         android:hint="@string/hint_password"
+        android:layout_centerInParent="true"
+        android:id="@+id/edit_login_password_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -54,13 +61,15 @@
         android:layout_marginBottom="5dp"
         android:layout_height="wrap_content"
         android:textColor="#fff"
-        android:text="@string/login"/>
+        android:text="@string/login"
+        android:layout_below="@id/edit_login_password_layout"/>
     <Button
         android:id="@+id/btn_register"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/register"/>
+        android:text="@string/register"
+        android:layout_below="@id/btn_login"/>
 
-</LinearLayout>
+</RelativeLayout>
