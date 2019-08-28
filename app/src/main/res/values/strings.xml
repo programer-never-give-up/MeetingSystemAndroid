@@ -29,4 +29,5 @@
     <string name="用户类型">hint_register_gender_text</string>
     <string name="hint_register_type_text">用户类型</string>
     <string name="hint_register_gender_text">性别</string>
+    <string name="hint_register_company">公司</string>
 </resources>

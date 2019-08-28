@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ import java.util.HashMap;
 
 import butterknife.BindInt;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import retrofit2.Call;
@@ -49,11 +52,14 @@ public class RegisterActivity extends AppCompatActivity {
     Button mSendMailBtn;
     @BindView(R.id.btn_register_submit)
     Button mRegisterBtn;
+    @BindView(R.id.edit_register_company)
+    TextInputEditText mCompanyEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        ButterKnife.bind(this);
     }
 
     @OnClick(R.id.btn_register_send_mail)
@@ -97,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SendMailResponseBean> call, Throwable t) {
-
+                toastMessage("请求失败");
             }
         });
     }
@@ -114,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity {
                 CheckCodeResponseBean bean = response.body();
                 if (bean.isStatus_check()) {
                     toastMessage("验证码正确");
-                    mSendMailBtn.setEnabled(true);
+                    mRegisterBtn.setEnabled(true);
                 } else {
                     toastMessage("验证码错误");
                 }
@@ -122,14 +128,67 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<CheckCodeResponseBean> call, Throwable t) {
-
+                toastMessage("请求失败");
             }
         });
     }
     @OnClick(R.id.btn_register_submit)
     public void register() {
+        // 验证两次密码是否一致
+        String password = mPasswordEdit.getText().toString();
+        String confirmPassword = mConfirmPasswordEdit.getText().toString();
+        if (!password.equals(confirmPassword)) {
+            toastMessage("两次密码输入不一致");
+            return;
+        }
+        // 表单制作
         HashMap<String, String> form = new HashMap<>();
-        
+        String username = mUsernameEdit.getText().toString();
+        String email = mEmailEdit.getText().toString();
+        String phoneNumber = mPhoneNumberEdit.getText().toString();
+        String address = mAddressEdit.getText().toString();
+        String profession = mProfessionEdit.getText().toString();
+        String company = mCompanyEdit.getText().toString();
+        RadioButton checkedGender = (RadioButton)findViewById(mGenderRadio.getCheckedRadioButtonId());
+        String gender = checkedGender.getText().toString();
+        RadioButton checkedType = (RadioButton)findViewById(mTypeRadio.getCheckedRadioButtonId());
+        String type = checkedType.getText().toString();
+        form.put("username", username);
+        form.put("password", password);
+        form.put("email", email);
+        form.put("phone_number", phoneNumber);
+        form.put("address", address);
+        form.put("company", company);
+        form.put("profession", profession);
+        form.put("gender", gender);
+        form.put("type", type);
+        // post
+        Retrofit retrofit = RetrofitClient.getInstance();
+        IRegisterApi api = retrofit.create(IRegisterApi.class);
+        Call<RegisterResponseBean> call = api.register(form);
+        call.enqueue(new Callback<RegisterResponseBean>() {
+            @Override
+            public void onResponse(Call<RegisterResponseBean> call, Response<RegisterResponseBean> response) {
+                RegisterResponseBean bean = response.body();
+                if (bean.isStatus_username()) {
+                    toastMessage("用户名已被注册");
+                    return;
+                }
+                if (bean.isStatus()) {
+                    toastMessage("注册成功");
+                    finish();
+                } else {
+                    toastMessage(bean.getMessage());
+                    return;
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponseBean> call, Throwable t) {
+                toastMessage("请求失败");
+            }
+        });
 
     }
 

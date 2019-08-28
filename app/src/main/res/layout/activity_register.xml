@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edit_register_password"
+            android:inputType="textPassword"
             android:hint="@string/hint_password"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -44,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edit_register_confirm_password"
+            android:inputType="textPassword"
             android:hint="@string/hint_confirm_password"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -189,12 +191,23 @@
             android:id="@+id/edit_register_profession"
             android:hint="@string/hint_register_profession"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_register_company"
+            android:hint="@string/hint_register_company"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:layout_marginTop="20dp"
         android:id="@+id/btn_register_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_press_selector"
+        android:enabled="false"
         android:text="@string/btn_register_submit"/>
 </LinearLayout>
 </ScrollView>
