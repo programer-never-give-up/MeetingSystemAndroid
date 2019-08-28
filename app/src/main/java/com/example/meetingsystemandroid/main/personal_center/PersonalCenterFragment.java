@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid.main.fragment;
+package com.example.meetingsystemandroid.main.personal_center;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.meetingsystemandroid.R;
+import com.example.meetingsystemandroid.main.home.HomePageFragment;
 
 /**
  * A simple {@link Fragment} subclass.

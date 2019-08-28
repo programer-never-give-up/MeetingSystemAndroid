@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.fragment.HomePageFragment"
     android:background="#ddd">
-
-    <!-- TODO: Update blank fragment layout -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".main.home.HomePageFragment"
+    android:orientation="vertical">
     <TextView
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home page" />
+        android:layout_height="wrap_content"
+        android:text="@string/home_page_recommand_activity"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_page_recommend_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/home_page_recent_activity"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_page_recent_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>

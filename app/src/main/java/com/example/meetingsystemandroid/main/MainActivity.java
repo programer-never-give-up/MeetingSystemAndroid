@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.meetingsystemandroid.R;
-import com.example.meetingsystemandroid.main.fragment.CommunityFragment;
-import com.example.meetingsystemandroid.main.fragment.HomePageFragment;
-import com.example.meetingsystemandroid.main.fragment.MeetingManagerFragment;
-import com.example.meetingsystemandroid.main.fragment.PersonalCenterFragment;
+import com.example.meetingsystemandroid.main.search.SearchFragment;
+import com.example.meetingsystemandroid.main.home.HomePageFragment;
+import com.example.meetingsystemandroid.main.management.MeetingManagerFragment;
+import com.example.meetingsystemandroid.main.personal_center.PersonalCenterFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity{
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity{
         mNavbar = findViewById(R.id.navbar);
         mViewPager = findViewById(R.id.view_pager);
         mAdapter.addFragment(new HomePageFragment());
-        mAdapter.addFragment(new CommunityFragment());
+        mAdapter.addFragment(new SearchFragment());
         mAdapter.addFragment(new MeetingManagerFragment());
         mAdapter.addFragment(new PersonalCenterFragment());
         mViewPager.setAdapter(mAdapter);

@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid.main.fragment;
+package com.example.meetingsystemandroid.main.management;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,13 +14,12 @@ import com.example.meetingsystemandroid.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * to handle interaction events.
- * Use the {@link HomePageFragment#newInstance} factory method to
+ * Use the {@link MeetingManagerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomePageFragment extends Fragment {
+public class MeetingManagerFragment extends Fragment {
 
-    public HomePageFragment() {
+    public MeetingManagerFragment() {
         // Required empty public constructor
     }
 
@@ -30,13 +29,11 @@ public class HomePageFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomePageFragment.
+     * @return A new instance of fragment MeetingManagerFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static HomePageFragment newInstance(String param1, String param2) {
-        HomePageFragment fragment = new HomePageFragment();
+    public static MeetingManagerFragment newInstance(String param1, String param2) {
+        MeetingManagerFragment fragment = new MeetingManagerFragment();
         Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -49,10 +46,9 @@ public class HomePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+        return inflater.inflate(R.layout.fragment_meeting_manager, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
     }
 
@@ -65,4 +61,5 @@ public class HomePageFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
 }

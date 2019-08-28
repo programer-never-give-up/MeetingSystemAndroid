@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid.main.fragment;
+package com.example.meetingsystemandroid.main.search;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,15 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.meetingsystemandroid.R;
+import com.example.meetingsystemandroid.main.home.HomePageFragment;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CommunityFragment#newInstance} factory method to
+ * Use the {@link SearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CommunityFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
-    public CommunityFragment() {
+    public SearchFragment() {
         // Required empty public constructor
     }
 
@@ -48,7 +49,7 @@ public class CommunityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_community, container, false);
+        return inflater.inflate(R.layout.fragment_search, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
