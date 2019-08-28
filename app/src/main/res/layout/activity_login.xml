@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LoginActivity"
-    android:background="@mipmap/login_background">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
@@ -24,10 +22,10 @@
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="10dp"
-        android:hint="@string/hint_username"
+        android:hint="@string/hint_usename"
         android:layout_above="@id/edit_login_password_layout"
         android:id="@+id/edit_login_username_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_login_username"
@@ -44,13 +42,14 @@
         android:hint="@string/hint_password"
         android:layout_centerInParent="true"
         android:id="@+id/edit_login_password_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:layout_alignBottom="@+id/edit_login_password_layout"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/btn_login"
@@ -69,6 +68,7 @@
         android:layout_marginStart="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_register_press_selector"
         android:text="@string/register"
         android:layout_below="@id/btn_login"/>
 

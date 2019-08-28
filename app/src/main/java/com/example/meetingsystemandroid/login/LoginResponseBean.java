@@ -1,6 +1,6 @@
-package com.example.meetingsystemandroid.bean;
+package com.example.meetingsystemandroid.login;
 
-public class LoginBean {
+public class LoginResponseBean {
     private boolean status;
     private String message;
 

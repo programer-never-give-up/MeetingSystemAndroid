@@ -11,4 +11,22 @@
     <string name="register">注册</string>
     <string name="hint_username">用户名</string>
     <string name="hint_password">密码</string>
+    <string name="hint_confirm_password">确认密码</string>
+    <string name="hint_email">邮箱</string>
+    <string name="hint_register_gender_male">男</string>
+    <string name="hint_register_gender_female">女</string>
+    <string name="hint_address">地址</string>
+    <string name="hint_register_type_company">企业用户</string>
+    <string name="hint_register_type_personal">个人用户</string>
+    <string name="hint_register_gender_none">无</string>
+    <string name="btn_register_send_mail">发送验证码</string>
+    <string name="btn_register_submit">注册</string>
+    <string name="hint_phone_number">电话号码</string>
+    <string name="hint_register_profession">职业</string>
+    <string name="hint_register_basic_info">基本信息(必填)</string>
+    <string name="hint_register_check_code">邮箱验证码</string>
+    <string name="hint_register_extension_info">扩展信息(选填)</string>
+    <string name="用户类型">hint_register_gender_text</string>
+    <string name="hint_register_type_text">用户类型</string>
+    <string name="hint_register_gender_text">性别</string>
 </resources>

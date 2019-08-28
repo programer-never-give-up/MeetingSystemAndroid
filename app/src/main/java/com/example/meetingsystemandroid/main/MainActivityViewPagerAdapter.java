@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid.adapter;
+package com.example.meetingsystemandroid.main;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

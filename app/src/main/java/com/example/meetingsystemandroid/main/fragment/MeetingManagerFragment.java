@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid.fragment;
+package com.example.meetingsystemandroid.main.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,13 +14,12 @@ import com.example.meetingsystemandroid.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * Use the {@link PersonalCenterFragment#newInstance} factory method to
+ * Use the {@link MeetingManagerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PersonalCenterFragment extends Fragment {
+public class MeetingManagerFragment extends Fragment {
 
-    public PersonalCenterFragment() {
+    public MeetingManagerFragment() {
         // Required empty public constructor
     }
 
@@ -30,13 +29,11 @@ public class PersonalCenterFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HomePageFragment.
+     * @return A new instance of fragment MeetingManagerFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static HomePageFragment newInstance(String param1, String param2) {
-        HomePageFragment fragment = new HomePageFragment();
+    public static MeetingManagerFragment newInstance(String param1, String param2) {
+        MeetingManagerFragment fragment = new MeetingManagerFragment();
         Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -49,7 +46,7 @@ public class PersonalCenterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personal_center, container, false);
+        return inflater.inflate(R.layout.fragment_meeting_manager, container, false);
     }
 
     public void onButtonPressed(Uri uri) {
@@ -64,4 +61,5 @@ public class PersonalCenterFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid.fragment;
+package com.example.meetingsystemandroid.main.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,12 +14,13 @@ import com.example.meetingsystemandroid.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MeetingManagerFragment#newInstance} factory method to
+ * to handle interaction events.
+ * Use the {@link HomePageFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MeetingManagerFragment extends Fragment {
+public class HomePageFragment extends Fragment {
 
-    public MeetingManagerFragment() {
+    public HomePageFragment() {
         // Required empty public constructor
     }
 
@@ -29,11 +30,13 @@ public class MeetingManagerFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MeetingManagerFragment.
+     * @return A new instance of fragment HomePageFragment.
      */
-    public static MeetingManagerFragment newInstance(String param1, String param2) {
-        MeetingManagerFragment fragment = new MeetingManagerFragment();
+    // TODO: Rename and change types and number of parameters
+    public static HomePageFragment newInstance(String param1, String param2) {
+        HomePageFragment fragment = new HomePageFragment();
         Bundle args = new Bundle();
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -46,9 +49,10 @@ public class MeetingManagerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meeting_manager, container, false);
+        return inflater.inflate(R.layout.fragment_home_page, container, false);
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
     }
 
@@ -61,5 +65,4 @@ public class MeetingManagerFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
-
 }

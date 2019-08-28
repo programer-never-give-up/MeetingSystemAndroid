@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid.fragment;
+package com.example.meetingsystemandroid.main.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -14,13 +14,13 @@ import com.example.meetingsystemandroid.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * to handle interaction events.
- * Use the {@link HomePageFragment#newInstance} factory method to
+ * Activities that contain this fragment must implement the
+ * Use the {@link PersonalCenterFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomePageFragment extends Fragment {
+public class PersonalCenterFragment extends Fragment {
 
-    public HomePageFragment() {
+    public PersonalCenterFragment() {
         // Required empty public constructor
     }
 
@@ -49,10 +49,9 @@ public class HomePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_page, container, false);
+        return inflater.inflate(R.layout.fragment_personal_center, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
     }
 

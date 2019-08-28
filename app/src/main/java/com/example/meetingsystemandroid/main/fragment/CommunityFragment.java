@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid.fragment;
+package com.example.meetingsystemandroid.main.fragment;
 
 import android.content.Context;
 import android.net.Uri;

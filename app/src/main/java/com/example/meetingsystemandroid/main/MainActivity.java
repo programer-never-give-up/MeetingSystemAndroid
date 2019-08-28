@@ -1,4 +1,4 @@
-package com.example.meetingsystemandroid;
+package com.example.meetingsystemandroid.main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,11 +7,11 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.meetingsystemandroid.adapter.MainActivityViewPagerAdapter;
-import com.example.meetingsystemandroid.fragment.CommunityFragment;
-import com.example.meetingsystemandroid.fragment.HomePageFragment;
-import com.example.meetingsystemandroid.fragment.MeetingManagerFragment;
-import com.example.meetingsystemandroid.fragment.PersonalCenterFragment;
+import com.example.meetingsystemandroid.R;
+import com.example.meetingsystemandroid.main.fragment.CommunityFragment;
+import com.example.meetingsystemandroid.main.fragment.HomePageFragment;
+import com.example.meetingsystemandroid.main.fragment.MeetingManagerFragment;
+import com.example.meetingsystemandroid.main.fragment.PersonalCenterFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity{
