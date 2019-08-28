@@ -30,4 +30,7 @@
     <string name="hint_register_type_text">用户类型</string>
     <string name="hint_register_gender_text">性别</string>
     <string name="hint_register_company">公司</string>
+    <string name="personal_center_attend_history">参与历史</string>
+    <string name="personal_center_organize_history">举办历史</string>
+    <string name="personal_center_setting">设置</string>
 </resources>

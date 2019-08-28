@@ -15,14 +15,14 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".personal_center.PercenalCenterctivity"></activity>
         <activity android:name=".register.RegisterActivity" />
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".login.LoginActivity"></activity>
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity"></activity>
     </application>
 
 </manifest>

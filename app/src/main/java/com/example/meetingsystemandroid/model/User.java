@@ -5,6 +5,8 @@ import java.util.UUID;
 public class User {
     private UUID uuid;
     private String userName;
+    private String avatar;
+
     public User() {
         userName = "";
     }
