@@ -1,6 +1,7 @@
 package com.example.meetingsystemandroid.register;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class RegisterPresenterCompl implements IRegisterPresenter {
             toastMessage("两次密码输入不一致");
             return false;
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -68,6 +69,7 @@ public class RegisterPresenterCompl implements IRegisterPresenter {
 
     @Override
     public void sendMail(String email) {
+
         Retrofit retrofit = RetrofitClient.getInstance(mContext);
         IRegisterApi api = retrofit.create(IRegisterApi.class);
         Call<SendMailResponseBean> sendMailResponse = api.sendMail(email);
@@ -75,16 +77,20 @@ public class RegisterPresenterCompl implements IRegisterPresenter {
             @Override
             public void onResponse(Call<SendMailResponseBean> call, Response<SendMailResponseBean> response) {
                 SendMailResponseBean bean = response.body();
-                if (bean.isStatus_mail()) {
-                    toastMessage("邮箱已被注册!");
-                    return;
-                }
-                // 邮件发送成功 disable button开启120秒计时器
-                if (bean.isSended()) {
-                    // disable 和 设置button定时
-                    mRegisterView.sendMailButtonChange();
+                if (bean != null) {
+                    if (bean.isStatus_mail()) {
+                        toastMessage("邮箱已被注册!");
+                        return;
+                    }
+                    // 邮件发送成功 disable button开启120秒计时器
+                    if (bean.isSended()) {
+                        // disable 和 设置button定时
+                        mRegisterView.sendMailButtonChange();
+                    } else {
+                        toastMessage(bean.getMessage());
+                    }
                 } else {
-                    toastMessage(bean.getMessage());
+                    toastMessage("请求错误");
                 }
             }
 

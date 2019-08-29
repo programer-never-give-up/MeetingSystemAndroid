@@ -15,11 +15,11 @@ public interface IRegisterApi {
     Call<RegisterResponseBean> register(@FieldMap Map<String, String> fields);
 
     @FormUrlEncoded
-    @POST("api/sendMail/")
+    @POST("api/mail/sendMail/")
     Call<SendMailResponseBean> sendMail(@Field("email") String email);
 
     @FormUrlEncoded
-    @POST("api/checkMail")
+    @POST("api/mail/checkMail/")
     Call<CheckCodeResponseBean> checkCode(@Field("code") String code);
 
 }

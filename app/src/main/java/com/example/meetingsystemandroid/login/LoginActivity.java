@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -29,8 +30,14 @@ import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView{
 
-    @BindView(R.id.edit_login_username)  TextInputEditText mUsernameEdit;
-    @BindView(R.id.edit_login_password)  TextInputEditText mPasswordEdit;
+    @BindView(R.id.edit_login_username)
+    TextInputEditText mUsernameEdit;
+    @BindView(R.id.edit_login_password)
+    TextInputEditText mPasswordEdit;
+    @BindView(R.id.check_login_auto)
+    CheckBox mAutoLoginCheck;
+    @BindView(R.id.check_login_remember_pass)
+    CheckBox mRememberPassword; //记住密码
 
     private AlertDialog mLoadingDialog;
     private LoginPresenterCompl mLoginPresenter;
@@ -40,6 +47,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         mLoginPresenter = new LoginPresenterCompl(this, this);
+        mLoginPresenter.autoLogin();
     }
 
     @OnClick(R.id.btn_login)
@@ -47,6 +55,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
         // 获取用户名密码
         String username = mUsernameEdit.getText().toString();
         String password = mPasswordEdit.getText().toString();
+        if (mAutoLoginCheck.isChecked()) {
+            mLoginPresenter.saveLoginInfo(username, password);
+        }
         mLoginPresenter.login(username, password);
 
     }
@@ -107,6 +118,11 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
         if (mLoadingDialog != null) {
             mLoadingDialog.dismiss();
         }
+    }
+
+    @Override
+    public void closeLogin() {
+        finish();
     }
 
 }

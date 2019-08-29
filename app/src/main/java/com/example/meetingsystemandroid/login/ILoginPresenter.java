@@ -7,6 +7,8 @@ public interface ILoginPresenter {
     // 自动登录
     public void autoLogin();
 
+    public void saveLoginInfo(String username, String password);
+
     public void toastMessage(String message);
 
     public void redirectToRegister();
