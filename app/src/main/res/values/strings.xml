@@ -37,4 +37,16 @@
     <string name="tool_activity_name">活动名称</string>
     <string name="tool_activity_time">活动时间</string>
     <string name="tool_activity_location">活动地点</string>
+    <string name="management_organize">发布活动管理</string>
+    <string name="management_organize_unpublished">未发布</string>
+    <string name="management_organize_published">已发布</string>
+    <string name="management_organize_underway">进行中</string>
+    <string name="management_attend">参加活动管理</string>
+    <string name="management_attend_not_start">未开始</string>
+    <string name="management_attend_underway">进行中</string>
+    <string name="management_oattend_finish">已结束</string>
+    <string name="management_collect">我的收藏</string>
+    <string name="personal_center_logout">取消登录</string>
+    <string name="auto_login">自动登录</string>
+    <string name="remember_password">记住密码</string>
 </resources>

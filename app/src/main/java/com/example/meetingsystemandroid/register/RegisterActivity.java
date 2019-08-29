@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
     @OnClick(R.id.btn_register_send_mail)
     public void sendMail() {
         String email = mEmailEdit.getText().toString();
-        Retrofit retrofit = RetrofitClient.getInstance();
+        Retrofit retrofit = RetrofitClient.getInstance(this);
         IRegisterApi api = retrofit.create(IRegisterApi.class);
         Call<SendMailResponseBean> sendMailResponse = api.sendMail(email);
         sendMailResponse.enqueue(new Callback<SendMailResponseBean>() {
@@ -111,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
     @OnTextChanged(R.id.edit_register_check_code)
     public void sendCheckCode() {
         String checkCode = mCheckCodeEdit.getText().toString();
-        Retrofit retrofit = RetrofitClient.getInstance();
+        Retrofit retrofit = RetrofitClient.getInstance(this);
         IRegisterApi api = retrofit.create(IRegisterApi.class);
         Call<CheckCodeResponseBean> call = api.checkCode(checkCode);
         call.enqueue(new Callback<CheckCodeResponseBean>() {
@@ -163,7 +163,7 @@ public class RegisterActivity extends AppCompatActivity {
         form.put("gender", gender);
         form.put("type", type);
         // post
-        Retrofit retrofit = RetrofitClient.getInstance();
+        Retrofit retrofit = RetrofitClient.getInstance(this);
         IRegisterApi api = retrofit.create(IRegisterApi.class);
         Call<RegisterResponseBean> call = api.register(form);
         call.enqueue(new Callback<RegisterResponseBean>() {
