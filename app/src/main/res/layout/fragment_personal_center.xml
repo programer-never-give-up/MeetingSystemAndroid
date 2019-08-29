@@ -8,6 +8,7 @@
     tools:context=".main.personal_center.PersonalCenterFragment"
     android:background="#ddd">
         <RelativeLayout
+            android:id="@+id/personal_center_user_card"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +57,7 @@
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/personal_center_attend_history"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,6 +76,7 @@
         android:background="#ddd"/>
     <RelativeLayout
         android:padding="10dp"
+        android:id="@+id/personal_center_organize_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -87,6 +90,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/personal_center_setting"
         android:padding="10dp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
@@ -100,6 +104,7 @@
             android:text="@string/personal_center_setting"/>
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/personal_center_login_logout"
         android:padding="10dp"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
@@ -107,6 +112,7 @@
         android:clickable="true"
         android:background="@drawable/personal_center_press_selector">
         <TextView
+            android:id="@+id/text_personal_center_login_logout"
             android:textSize="15sp"
             android:textColor="#FF1111"
             android:layout_width="wrap_content"

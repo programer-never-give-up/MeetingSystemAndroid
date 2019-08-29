@@ -6,13 +6,21 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.meetingsystemandroid.R;
 import com.example.meetingsystemandroid.main.search.SearchFragment;
 import com.example.meetingsystemandroid.main.home.HomePageFragment;
 import com.example.meetingsystemandroid.main.management.MeetingManagerFragment;
 import com.example.meetingsystemandroid.main.personal_center.PersonalCenterFragment;
+import com.example.meetingsystemandroid.model.User;
+import com.example.meetingsystemandroid.utils.RetrofitClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -69,5 +77,45 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
+        getUserInfo();
+    }
+
+    private void getUserInfo() {
+        Retrofit retrofit = RetrofitClient.getInstance(this);
+        IMainApi api = retrofit.create(IMainApi.class);
+        Call<LoginCheckResponseBean> call = api.checkLogin();
+        call.enqueue(new Callback<LoginCheckResponseBean>() {
+            @Override
+            public void onResponse(Call<LoginCheckResponseBean> call, Response<LoginCheckResponseBean> response) {
+                LoginCheckResponseBean bean = response.body();
+                if (bean != null) {
+                    if (bean.isStatus()) {
+                        // 处于登陆状态, 继续获取用户信息
+                        Call<UserBean> call2 = api.getUserInfo();
+                        call2.enqueue(new Callback<UserBean>() {
+                            @Override
+                            public void onResponse(Call<UserBean> call, Response<UserBean> response) {
+                                UserBean bean1 = response.body();
+                                if (bean1 != null) {
+                                    User.setUserbeanToUser(bean1);
+                                } else {
+                                    Toast.makeText(MainActivity.this, "请求失败", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<UserBean> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginCheckResponseBean> call, Throwable t) {
+
+            }
+        });
+
     }
 }

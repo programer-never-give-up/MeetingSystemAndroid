@@ -13,9 +13,6 @@ public interface IPersonalCenterFragmentPresenter {
     // 跳转举办历史
     public void toOrganizeHistory();
 
-    // 登出
-    public void logout();
-
-    // 登录
-    public void toLogin();
+    // 通过用户类型决定是跳转到登录界面还是直接登出
+    public void loginOrLogout();
 }

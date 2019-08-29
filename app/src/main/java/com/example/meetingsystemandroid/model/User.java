@@ -1,5 +1,7 @@
 package com.example.meetingsystemandroid.model;
 
+import com.example.meetingsystemandroid.main.UserBean;
+
 import java.util.UUID;
 
 public class User {
@@ -17,9 +19,11 @@ public class User {
     private String introduction;
     private String phoneNumber;
     private String email;
+    private String gender;
+    private String address;
 
 
-    public User getInstance() {
+    public static User getInstance() {
         if (activeUser == null) {
             activeUser = new User();
         }
@@ -38,6 +42,43 @@ public class User {
         type = UserType.VISITOR;
     }
 
+    public static void setDefault() {
+        activeUser.setAvatar("http://139.219.14.146/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png");
+        activeUser.setEmail("");
+        activeUser.setAddress("");
+        activeUser.setIntroduction("");
+        activeUser.setGender("");
+        activeUser.setPhoneNumber("");
+        activeUser.setType(UserType.VISITOR);
+        activeUser.setProfession("");
+        activeUser.setUserName("未登录");
+    }
+
+    public static void setUserbeanToUser(UserBean bean) {
+        if (activeUser == null) {
+            activeUser = new User();
+        }
+        activeUser.setAvatar(bean.getAvatar());
+        activeUser.setEmail(bean.getEmail());
+        activeUser.setIntroduction(bean.getIntroduction());
+        switch (bean.getType()) {
+            case "游客":
+                activeUser.setType(UserType.VISITOR);
+                break;
+            case "企业":
+                activeUser.setType(UserType.COMPANY);
+                break;
+            case "个人":
+                activeUser.setType(UserType.PERSONAL);
+                break;
+                default:
+                    activeUser.setType(UserType.VISITOR);
+        }
+        activeUser.setPhoneNumber(bean.getPhone_number());
+        activeUser.setUserName(bean.getUsername());
+        activeUser.setGender(bean.getGender());
+        activeUser.setAddress(bean.getAddress());
+    }
 
     public UUID getUuid() {
         return uuid;
@@ -101,6 +142,34 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String typeToString() {
+        switch (type) {
+            case VISITOR:
+                return "游客";
+            case COMPANY:
+                return "企业用户";
+            case PERSONAL:
+                return "个人用户";
+        }
+        return "错误代码";
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }
