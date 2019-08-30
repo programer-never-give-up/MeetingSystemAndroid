@@ -34,7 +34,7 @@ public class User {
         // 初始化时为游客账户
         uuid = null;
         userName = "未登录";
-        avatar = "http://139.219.14.146/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png"; // 之后换成default
+        avatar = "http://139.219.14.146:8001/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png"; // 之后换成default
         email = "";
         phoneNumber = "";
         profession = "";
@@ -43,7 +43,7 @@ public class User {
     }
 
     public static void setDefault() {
-        activeUser.setAvatar("http://139.219.14.146/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png");
+        activeUser.setAvatar("http://139.219.14.146:8001/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png");
         activeUser.setEmail("");
         activeUser.setAddress("");
         activeUser.setIntroduction("");

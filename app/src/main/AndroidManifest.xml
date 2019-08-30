@@ -14,17 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".user_history.UserHistoryActivity"></activity>
+        <activity android:name=".user_history.UserHistoryActivity">
+
+        </activity>
         <activity android:name=".activity_info.ShowActivityInfoActivity">
+
+        </activity>
+        <activity android:name=".personal_center.PercenalCenterctivity" />
+        <activity android:name=".register.RegisterActivity" />
+        <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".personal_center.PercenalCenterctivity" />
-        <activity android:name=".register.RegisterActivity" />
-        <activity android:name=".login.LoginActivity"></activity>
         <activity android:name=".main.MainActivity" />
     </application>
 

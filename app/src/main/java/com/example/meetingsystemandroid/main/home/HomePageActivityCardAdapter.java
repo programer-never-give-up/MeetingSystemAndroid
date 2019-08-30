@@ -59,7 +59,7 @@ public class HomePageActivityCardAdapter extends RecyclerView.Adapter<HomePageAc
         public void setActivityInfo(Context context) {
             // 动态加载图片
             Glide.with(context)
-                    .load("http://139.219.14.146/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png")
+                    .load("http://139.219.14.146:8001/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png")
                     .into(mActivityLogo);
             mActivityName.setText("会议名称");
             mActivityLocation.setText("江苏 南京");

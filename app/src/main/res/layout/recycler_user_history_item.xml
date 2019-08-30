@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/personal_center_press_selector"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="10dp">
+    <TextView
+        android:layout_centerVertical="true"
+        android:id="@+id/user_history_list_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_activity_title"
+        android:textSize="20sp"/>
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:textSize="12sp"
+        android:id="@+id/user_history_list_item_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始时间:2019-07-23 7:00"
+        android:layout_marginBottom="10dp"
+         />
+    <TextView
+        android:textSize="12sp"
+        android:id="@+id/user_history_list_item_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="结束时间:2019-07-24 17:00"
+        />
+    </LinearLayout>
+</RelativeLayout>
+</androidx.cardview.widget.CardView>

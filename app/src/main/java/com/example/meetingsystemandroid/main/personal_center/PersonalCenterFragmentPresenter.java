@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.meetingsystemandroid.login.LoginActivity;
 import com.example.meetingsystemandroid.model.User;
+import com.example.meetingsystemandroid.user_history.UserHistoryActivity;
 import com.example.meetingsystemandroid.utils.RetrofitClient;
 
 import retrofit2.Call;
@@ -46,12 +47,16 @@ public class PersonalCenterFragmentPresenter implements IPersonalCenterFragmentP
 
     @Override
     public void toAttendHistory() {
-
+        Intent intent = new Intent(mContext, UserHistoryActivity.class);
+        intent.putExtra("type", UserHistoryActivity.ATTEND_HISTORY);
+        mContext.startActivity(intent);
     }
 
     @Override
     public void toOrganizeHistory() {
-
+        Intent intent = new Intent(mContext, UserHistoryActivity.class);
+        intent.putExtra("type", UserHistoryActivity.ORGANIZE_HISTORY);
+        mContext.startActivity(intent);
     }
 
     @Override

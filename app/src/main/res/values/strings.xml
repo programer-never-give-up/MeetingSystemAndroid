@@ -57,4 +57,5 @@
     <string name="show_activity_introduction">简介</string>
     <string name="show_activity_files">活动文件</string>
     <string name="attend_activity">参加</string>
+    <string name="user_history_attend">参会历史</string>
 </resources>
