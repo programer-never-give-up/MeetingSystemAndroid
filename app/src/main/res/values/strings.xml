@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">MeetingSystemAndroid</string>
+    <string name="app_name">activitySystemAndroid</string>
     <string name="personal_center">个人中心</string>
     <string name="home">主页</string>
-    <string name="meeting_manager">会议管理</string>
+    <string name="activity_manager">活动管理</string>
     <string name="community">社区</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -50,4 +50,11 @@
     <string name="auto_login">自动登录</string>
     <string name="remember_password">记住密码</string>
     <string name="btn_check_check_code_confirm">确认验证码</string>
+    <string name="show_activity_title">活动标题</string>
+    <string name="show_activity_time">时间</string>
+    <string name="show_activity_location">地点</string>
+    <string name="show_activity_organizer">主办方</string>
+    <string name="show_activity_introduction">简介</string>
+    <string name="show_activity_files">活动文件</string>
+    <string name="attend_activity">参加</string>
 </resources>
