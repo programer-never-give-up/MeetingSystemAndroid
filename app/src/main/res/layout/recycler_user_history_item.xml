@@ -11,6 +11,7 @@
     android:background="@drawable/personal_center_press_selector"
     android:clickable="true"
     android:focusable="true"
+    android:id="@+id/user_history_list_item"
     android:padding="10dp">
     <TextView
         android:layout_centerVertical="true"

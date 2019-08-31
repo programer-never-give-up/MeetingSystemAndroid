@@ -213,6 +213,7 @@
             android:id="@+id/edit_register_company"
             android:hint="@string/hint_register_company"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <!--调试-->
     <Button
         android:layout_marginTop="20dp"
         android:id="@+id/btn_register_submit"

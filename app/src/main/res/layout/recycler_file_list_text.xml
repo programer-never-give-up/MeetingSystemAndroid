@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:background="@drawable/personal_center_press_selector">
+    android:id="@+id/show_activity_file_list_item_download"
+    android:background="@drawable/personal_center_press_selector"
+    android:focusable="true">
     <TextView
         android:padding="20dp"
         android:id="@+id/show_activity_file_list_item"

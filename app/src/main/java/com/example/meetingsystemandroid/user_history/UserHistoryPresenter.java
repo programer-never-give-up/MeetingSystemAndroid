@@ -1,8 +1,10 @@
 package com.example.meetingsystemandroid.user_history;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import com.example.meetingsystemandroid.activity_info.ShowActivityInfoActivity;
 import com.example.meetingsystemandroid.utils.RetrofitClient;
 
 import java.lang.reflect.Array;
@@ -67,7 +69,6 @@ public class UserHistoryPresenter implements IUserHistoryPresenter {
             @Override
             public void onResponse(Call<UserHistoryBean> call, Response<UserHistoryBean> response) {
                 UserHistoryBean bean = response.body();
-                Log.d("a12", "onResponse: "+bean.getMessage());
                 if (bean != null) {
                     mView.onSuccess(new ArrayList<UserHistoryBean.HistoryActivity>(Arrays.asList(bean.getList_activity())));
                 } else {
@@ -80,5 +81,12 @@ public class UserHistoryPresenter implements IUserHistoryPresenter {
                 mView.onFailed();
             }
         });
+    }
+
+    @Override
+    public void toActivityInfo(String id) {
+        Intent intent = new Intent(mContext, ShowActivityInfoActivity.class);
+        intent.putExtra("id", id);
+        mContext.startActivity(intent);
     }
 }

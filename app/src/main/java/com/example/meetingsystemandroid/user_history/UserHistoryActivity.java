@@ -34,10 +34,11 @@ public class UserHistoryActivity extends AppCompatActivity implements IUserHisto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_history);
         ButterKnife.bind(this);
-        mHistoryList.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new UserHistoryListAdapter(this);
-        mHistoryList.setAdapter(mAdapter);
         mPresenter = new UserHistoryPresenter(this, this);
+        mHistoryList.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new UserHistoryListAdapter(this, mPresenter);
+        mHistoryList.setAdapter(mAdapter);
+
         // 初始化数据
         int type = getIntent().getIntExtra("type", 0);
         mPresenter.init(type);

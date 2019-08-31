@@ -17,14 +17,17 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class UserHistoryListAdapter extends RecyclerView.Adapter<UserHistoryListAdapter.UserHistoryListItemViewHolder> {
 
-    public ArrayList<UserHistoryBean.HistoryActivity> mHistoryList;
-    public Context mContext;
-    public UserHistoryListAdapter(Context context) {
+    private ArrayList<UserHistoryBean.HistoryActivity> mHistoryList;
+    private Context mContext;
+    private UserHistoryPresenter mPresenter;
+    public UserHistoryListAdapter(Context context, UserHistoryPresenter presenter) {
         mContext = context;
         mHistoryList = new ArrayList<>();
+        mPresenter = presenter;
     }
     @NonNull
     @Override
@@ -39,6 +42,7 @@ public class UserHistoryListAdapter extends RecyclerView.Adapter<UserHistoryList
         holder.mActivityName.setText(item.getName_act());
         holder.mActivityStartTime.setText("开始时间:"+item.getStart_time());
         holder.mActivityEndTime.setText("结束时间:"+item.getEnd_time());
+        holder.mActivityId = item.getUuid_act();
     }
 
     public void addHistoryList(ArrayList<UserHistoryBean.HistoryActivity> list) {
@@ -59,9 +63,15 @@ public class UserHistoryListAdapter extends RecyclerView.Adapter<UserHistoryList
         @BindView(R.id.user_history_list_item_end_time)
         TextView mActivityEndTime;
 
+        private String mActivityId;
+
         public UserHistoryListItemViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+        }
+        @OnClick(R.id.user_history_list_item)
+        public void toActiviyInfo() {
+            mPresenter.toActivityInfo(mActivityId);
         }
     }
 }

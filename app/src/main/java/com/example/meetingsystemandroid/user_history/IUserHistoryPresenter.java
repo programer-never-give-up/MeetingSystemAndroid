@@ -10,4 +10,5 @@ public interface IUserHistoryPresenter {
     // 获取用户举办历史
     public void getUserOrganizeHistory();
 
+    public void toActivityInfo(String id);
 }

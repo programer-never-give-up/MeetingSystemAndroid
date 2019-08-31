@@ -15,16 +15,23 @@ import com.example.meetingsystemandroid.R;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ShowFileListAdapter extends RecyclerView.Adapter<ShowFileListAdapter.FileListItemViewHolder> {
 
     private Context mContext;
+    private ArrayList<ActivityBean.ActivityFile> mFileList;
+    private ShowActivityPresenter mPresenter;
 
-    public ShowFileListAdapter(Context context) {
+    public ShowFileListAdapter(Context context, ShowActivityPresenter presenter) {
         mContext = context;
+        mFileList = new ArrayList<>();
+        mPresenter = presenter;
     }
 
     @NonNull
@@ -36,12 +43,18 @@ public class ShowFileListAdapter extends RecyclerView.Adapter<ShowFileListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull FileListItemViewHolder holder, int position) {
-        holder.setFileName("这是测试用的文件名.txt");
+        ActivityBean.ActivityFile file = mFileList.get(position);
+        holder.setFile(file.getFileName(), file.getFileSrc());
+    }
+
+    public void setFileList(ArrayList<ActivityBean.ActivityFile> fileList) {
+        mFileList.addAll(fileList);
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return mFileList.size();
     }
 
     class FileListItemViewHolder extends RecyclerView.ViewHolder {
@@ -49,13 +62,22 @@ public class ShowFileListAdapter extends RecyclerView.Adapter<ShowFileListAdapte
         @BindView(R.id.show_activity_file_list_item)
         TextView mFileName;
 
+        private String mFileSrc;
+
         public FileListItemViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void setFileName(String name) {
+        public void setFile(String name, String src) {
             mFileName.setText(name);
+            mFileSrc = src;
         }
+
+        @OnClick(R.id.show_activity_file_list_item_download)
+        public void downLoadFile() {
+            mPresenter.downloadActivityFile(mFileSrc+mFileName);
+        }
+
     }
 }

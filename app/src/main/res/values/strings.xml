@@ -16,8 +16,8 @@
     <string name="hint_register_gender_male">男</string>
     <string name="hint_register_gender_female">女</string>
     <string name="hint_address">地址</string>
-    <string name="hint_register_type_company">企业用户</string>
-    <string name="hint_register_type_personal">个人用户</string>
+    <string name="hint_register_type_company">企业</string>
+    <string name="hint_register_type_personal">个人</string>
     <string name="hint_register_gender_none">无</string>
     <string name="btn_register_send_mail">发送验证码</string>
     <string name="btn_register_submit">注册</string>

@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         // 验证两次密码是否一致
         String password = mPasswordEdit.getText().toString();
         String confirmPassword = mConfirmPasswordEdit.getText().toString();
-        if (!password.equals(confirmPassword)) {
+        if (!mRegisterPresenter.checkConfirmPassword(password, confirmPassword)) {
             return;
         }
         // 表单制作
