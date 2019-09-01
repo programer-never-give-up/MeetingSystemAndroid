@@ -7,4 +7,6 @@ public interface IManagerView {
 
     // 获取二维码门票时弹框显示
     public void showTicket();
+
+    public void setActionBarTitle();
 }

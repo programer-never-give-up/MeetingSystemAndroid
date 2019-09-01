@@ -4,15 +4,16 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ddd"
     >
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".main.management.MeetingManagerFragment"
-    android:background="#ddd">
+    tools:context=".main.management.MeetingManagerFragment">
 
     <LinearLayout
+        android:id="@+id/manager_fragment_publish_module"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/management_organize"/>
     <TextView
+        android:id="@+id/manager_fragment_publish_unpublish"
         android:clickable="true"
         android:padding="10dp"
         android:layout_width="match_parent"
@@ -34,6 +36,7 @@
         android:layout_height="1dp"
         android:background="#ddd"/>
     <TextView
+        android:id="@+id/manager_fragment_publish_published"
         android:clickable="true"
         android:padding="10dp"
         android:layout_width="match_parent"
@@ -45,6 +48,7 @@
             android:layout_height="1dp"
             android:background="#ddd"/>
     <TextView
+        android:id="@+id/manager_fragment_publish_processing"
         android:clickable="true"
         android:padding="10dp"
         android:layout_width="match_parent"
@@ -56,6 +60,7 @@
             android:layout_height="1dp"
             android:background="#ddd"/>
         <TextView
+            android:id="@+id/manager_fragment_publish_in_check"
             android:clickable="true"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -75,6 +80,7 @@
             android:layout_height="wrap_content"
             android:text="@string/management_attend"/>
         <TextView
+            android:id="@+id/manager_fragment_attend_not_start"
             android:clickable="true"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -86,6 +92,7 @@
             android:layout_height="1dp"
             android:background="#ddd"/>
         <TextView
+            android:id="@+id/manager_fragment_attend_processing"
             android:clickable="true"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -96,13 +103,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#ddd"/>
-        <TextView
-            android:clickable="true"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/personal_center_press_selector"
-            android:text="@string/management_oattend_finish"/>
     </LinearLayout>
 
     <LinearLayout
@@ -117,6 +117,7 @@
             android:layout_height="wrap_content"
             android:text="@string/management_collect"/>
         <TextView
+            android:id="@+id/manager_fragment_collection_not_start"
             android:clickable="true"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -128,6 +129,7 @@
             android:layout_height="1dp"
             android:background="#ddd"/>
         <TextView
+            android:id="@+id/manager_fragment_collection_processing"
             android:clickable="true"
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -139,6 +141,7 @@
             android:layout_height="1dp"
             android:background="#ddd"/>
         <TextView
+            android:id="@+id/manager_fragment_collection_finished"
             android:clickable="true"
             android:padding="10dp"
             android:layout_width="match_parent"

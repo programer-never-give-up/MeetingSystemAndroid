@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.meetingsystemandroid.activity_info.ShowActivityInfoActivity;
+import com.example.meetingsystemandroid.utils.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
 
 public class ManagerPresenter implements IMangerPresenter{
     private Context mContext;
@@ -16,7 +20,9 @@ public class ManagerPresenter implements IMangerPresenter{
 
     @Override
     public void getActivityList(String type) {
-
+        Retrofit retrofit = RetrofitClient.getInstance(mContext);
+        IManagerApi api = retrofit.create(IManagerApi.class);
+        Call<ManagerResponseBean> call = api.getActivityList(type, 1, 5);
     }
 
     @Override
