@@ -61,7 +61,7 @@ public class HomePageActivityCardAdapter extends RecyclerView.Adapter<HomePageAc
             Glide.with(context)
                     .load("http://139.219.14.146:8001/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png")
                     .into(mActivityLogo);
-            mActivityName.setText("会议名称");
+            mActivityName.setText("东南大学九龙湖校区软件发布会");
             mActivityLocation.setText("江苏 南京");
             mActivityTime.setText("2019-10-1 9:00");
         }

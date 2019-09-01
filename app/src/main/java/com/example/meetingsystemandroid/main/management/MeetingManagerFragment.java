@@ -64,7 +64,7 @@ public class MeetingManagerFragment extends Fragment implements IManagerFragment
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            mPresenter.setFragmentUI();
+//            mPresenter.setFragmentUI();
         }
     }
 

@@ -8,16 +8,16 @@ import retrofit2.http.POST;
 
 public interface IGetUserHistoryApi {
 
-//    @GET("api/personal_center/history_attend/")
-//    Call<UserHistoryBean> getAttendHistory();
-//
-//    @GET("api/personal_center/history_organize/")
-//    Call<UserHistoryBean> getOrganizeHistory();
-    // 调试
-    @POST("api/personal_center/history_attend/")
+    @GET("api/personal_center/history_attend/")
     Call<UserHistoryBean> getAttendHistory();
 
-    @POST("api/personal_center/history_organize/")
+    @GET("api/personal_center/history_organize/")
     Call<UserHistoryBean> getOrganizeHistory();
+    // 调试
+//    @POST("api/personal_center/history_attend/")
+//    Call<UserHistoryBean> getAttendHistory();
+//
+//    @POST("api/personal_center/history_organize/")
+//    Call<UserHistoryBean> getOrganizeHistory();
 
 }

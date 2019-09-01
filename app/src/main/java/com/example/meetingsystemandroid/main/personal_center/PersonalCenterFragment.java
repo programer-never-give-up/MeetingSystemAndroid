@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.meetingsystemandroid.R;
 import com.example.meetingsystemandroid.main.home.HomePageFragment;
 import com.example.meetingsystemandroid.model.User;
+import com.example.meetingsystemandroid.utils.RetrofitClient;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -92,7 +93,7 @@ public class PersonalCenterFragment extends Fragment implements IPersonalCenterF
     @Override
     public void setUserCard(String avatar, String username, String type) {
         Glide.with(this)
-                .load(avatar)
+                .load(RetrofitClient.BASE_URL+avatar)
                 .into(mAvatar);
         mUsername.setText(username);
         mUserType.setText(type);

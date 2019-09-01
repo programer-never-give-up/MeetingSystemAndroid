@@ -9,4 +9,7 @@ public interface IManagerView {
     public void showTicket();
 
     public void setActionBarTitle();
+
+    // 请求失败时
+    public void onFailed();
 }

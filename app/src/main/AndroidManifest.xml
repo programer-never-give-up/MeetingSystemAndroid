@@ -21,12 +21,14 @@
         <activity android:name=".personal_center.PercenalCenterctivity" />
         <activity android:name=".register.RegisterActivity" android:label="@string/register"/>
         <activity android:name=".login.LoginActivity" >
+
+        </activity>
+        <activity android:name=".main.MainActivity" android:label="@string/main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity" android:label="@string/main"/>
     </application>
 
 </manifest>

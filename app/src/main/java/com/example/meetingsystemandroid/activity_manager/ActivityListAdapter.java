@@ -43,13 +43,13 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ActivityListItem holder, int position) {
-        holder.setActivityCard(mType);
+        holder.setActivityCard(mType, mActivityList.get(position));
     }
 
     @Override
     public int getItemCount() {
-//        return mActivityList.size();
-        return 5;
+        return mActivityList.size();
+//        return 5;
     }
 
     public void addActivities(ArrayList<ManagerResponseBean.ActivityInfo> activityList) {
@@ -81,11 +81,10 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
             ButterKnife.bind(this, itemView);
         }
         // 为了调试界面效果，先去除参数 ManagerResponseBean.ActivityInfo info
-        public void setActivityCard(String type) {
-            // 为了调试先注释掉
-//            mActivityId = info.getId();
-//            mActivityName.setText(info.getActivityName());
-//            mActivityStartTime.setText(info.getStartTime());
+        public void setActivityCard(String type, ManagerResponseBean.ActivityInfo info) {
+            mActivityId = info.getId();
+            mActivityName.setText(info.getActivityName());
+            mActivityStartTime.setText(info.getStartTime());
             // 设置删除按钮
             if (type.equals(ManagerActivity.ATTEND_PROCESSING) || type.equals(ManagerActivity.ORGANIZE_PROCESSING)) {
                 mDeleteButton.setVisibility(View.GONE);

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.ReceiverCallNotAllowedException;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.meetingsystemandroid.R;
 
@@ -21,7 +22,7 @@ public class ManagerActivity extends AppCompatActivity implements IManagerView{
 
     public static final String ACTIVITY_TYPE_TAG = "type";
     // 发布会议管理
-    public static final String ORGANIZE_PROCESSING = " management-processing"; // 进行中
+    public static final String ORGANIZE_PROCESSING = "management-processing"; // 进行中
     public static final String ORGANIZE_UNPUBLISHED = "management-unpublished"; // 未发布
     public static final String ORGANIZE_PUBLISHED = "management-published"; // 已发布未开始
     public static final String ORGANIZE_INCHECK = "management-to_be_audited"; // 待审核
@@ -53,6 +54,7 @@ public class ManagerActivity extends AppCompatActivity implements IManagerView{
         mAdapter = new ActivityListAdapter(this, mPresenter, mType);
         mActivityList.setAdapter(mAdapter);
         setActionBarTitle();
+        mPresenter.getActivityList(mType);
     }
 
     @Override
@@ -104,6 +106,11 @@ public class ManagerActivity extends AppCompatActivity implements IManagerView{
             bar.setTitle(title);
             bar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    public void onFailed() {
+        Toast.makeText(this, "请求失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override
