@@ -35,6 +35,7 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
     @BindView(R.id.show_activity_file_list)
     RecyclerView mFileList;
 
+    public static final String SHOW_ACTIVITY_TAG = "id";
     private ShowFileListAdapter mAdapter;
     private ShowActivityPresenter mPresenter;
 
@@ -49,7 +50,7 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
         mFileList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mFileList.setAdapter(mAdapter);
         mFileList.setNestedScrollingEnabled(false);
-        mPresenter.setActivity(getIntent().getStringExtra("id"));
+        mPresenter.setActivity(getIntent().getStringExtra(SHOW_ACTIVITY_TAG));
     }
 
 

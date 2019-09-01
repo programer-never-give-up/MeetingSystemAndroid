@@ -86,7 +86,7 @@ public class UserHistoryPresenter implements IUserHistoryPresenter {
     @Override
     public void toActivityInfo(String id) {
         Intent intent = new Intent(mContext, ShowActivityInfoActivity.class);
-        intent.putExtra("id", id);
+        intent.putExtra(ShowActivityInfoActivity.SHOW_ACTIVITY_TAG, id);
         mContext.startActivity(intent);
     }
 }

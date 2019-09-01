@@ -67,7 +67,6 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
     @OnClick(R.id.btn_register_send_mail)
     public void sendMail() {
         String email = mEmailEdit.getText().toString();
-        Log.d("aaa", "sendMail:"+email);
         mRegisterPresenter.sendMail(email);
     }
 

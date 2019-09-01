@@ -58,4 +58,9 @@
     <string name="show_activity_files">活动文件</string>
     <string name="attend_activity">参加</string>
     <string name="user_history_attend">参会历史</string>
+    <string name="manager_activity_delete">删除</string>
+    <string name="manager_activity_view_ticket">查看门票</string>
+    <string name="manager_activity_publish">发布</string>
+    <string name="manager_activity_detail">查看详情</string>
+    <string name="manager_activity_scan">入场扫描</string>
 </resources>

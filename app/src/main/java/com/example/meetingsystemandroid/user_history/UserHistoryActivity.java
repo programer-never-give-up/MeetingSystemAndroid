@@ -29,6 +29,8 @@ public class UserHistoryActivity extends AppCompatActivity implements IUserHisto
     public static final int ATTEND_HISTORY = 1;
 
     private UserHistoryPresenter mPresenter;
+
+    public static final String USER_HISTORY_TAG = "type";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class UserHistoryActivity extends AppCompatActivity implements IUserHisto
         mHistoryList.setAdapter(mAdapter);
 
         // 初始化数据
-        int type = getIntent().getIntExtra("type", 0);
+        int type = getIntent().getIntExtra(USER_HISTORY_TAG, 0);
         mPresenter.init(type);
     }
 

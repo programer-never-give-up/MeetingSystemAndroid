@@ -48,14 +48,14 @@ public class PersonalCenterFragmentPresenter implements IPersonalCenterFragmentP
     @Override
     public void toAttendHistory() {
         Intent intent = new Intent(mContext, UserHistoryActivity.class);
-        intent.putExtra("type", UserHistoryActivity.ATTEND_HISTORY);
+        intent.putExtra(UserHistoryActivity.USER_HISTORY_TAG, UserHistoryActivity.ATTEND_HISTORY);
         mContext.startActivity(intent);
     }
 
     @Override
     public void toOrganizeHistory() {
         Intent intent = new Intent(mContext, UserHistoryActivity.class);
-        intent.putExtra("type", UserHistoryActivity.ORGANIZE_HISTORY);
+        intent.putExtra(UserHistoryActivity.USER_HISTORY_TAG, UserHistoryActivity.ORGANIZE_HISTORY);
         mContext.startActivity(intent);
     }
 

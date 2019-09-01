@@ -13,7 +13,7 @@ public interface IGetUserHistoryApi {
 //
 //    @GET("api/personal_center/history_organize/")
 //    Call<UserHistoryBean> getOrganizeHistory();
-
+    // 调试
     @POST("api/personal_center/history_attend/")
     Call<UserHistoryBean> getAttendHistory();
 
