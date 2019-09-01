@@ -6,4 +6,6 @@ public interface IShowAcitivityView {
 
     // 请求失败跳回原来页面
     public void onGetInfoFailed();
+
+    public void setActionBarTitle();
 }

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -46,6 +51,17 @@
         android:layout_height="wrap_content"
         android:background="@drawable/personal_center_press_selector"
         android:text="@string/management_organize_underway"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ddd"/>
+        <TextView
+            android:clickable="true"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/personal_center_press_selector"
+            android:text="@string/management_organize_in_check"/>
     </LinearLayout>
 
     <LinearLayout
@@ -89,13 +105,47 @@
             android:text="@string/management_oattend_finish"/>
     </LinearLayout>
 
-    <TextView
-        android:clickable="true"
+    <LinearLayout
         android:layout_marginTop="30dp"
-        android:padding="10dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/personal_center_press_selector"
-        android:text="@string/management_collect"/>
+        android:orientation="vertical">
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/management_collect"/>
+        <TextView
+            android:clickable="true"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/personal_center_press_selector"
+            android:text="@string/management_attend_not_start"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ddd"/>
+        <TextView
+            android:clickable="true"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/personal_center_press_selector"
+            android:text="@string/management_attend_underway"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ddd"/>
+        <TextView
+            android:clickable="true"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/personal_center_press_selector"
+            android:text="@string/management_oattend_finish"/>
+    </LinearLayout>
 
 </LinearLayout>
+</ScrollView>

@@ -1,11 +1,13 @@
 package com.example.meetingsystemandroid.activity_info;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +53,7 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
         mFileList.setAdapter(mAdapter);
         mFileList.setNestedScrollingEnabled(false);
         mPresenter.setActivity(getIntent().getStringExtra(SHOW_ACTIVITY_TAG));
+        setActionBarTitle();
     }
 
 
@@ -68,5 +71,23 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
     public void onGetInfoFailed() {
         Toast.makeText(this, "获取数据失败！", Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    @Override
+    public void setActionBarTitle() {
+        ActionBar bar = getSupportActionBar();
+        if (bar != null) {
+            bar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:// 点击返回图标事件
+                this.finish();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

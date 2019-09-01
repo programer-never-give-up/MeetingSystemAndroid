@@ -1,10 +1,12 @@
 package com.example.meetingsystemandroid.register;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -62,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
         mRegisterPresenter = new RegisterPresenterCompl(this, this);
+        setActionBar();
     }
 
     @OnClick(R.id.btn_register_send_mail)
@@ -139,5 +142,21 @@ public class RegisterActivity extends AppCompatActivity implements IRegisterView
         finish();
     }
 
+    @Override
+    public void setActionBar() {
+        ActionBar bar = getSupportActionBar();
+        if (bar != null) {
+            bar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:// 点击返回图标事件
+                this.finish();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

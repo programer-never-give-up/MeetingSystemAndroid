@@ -5,4 +5,5 @@ public interface IRegisterView {
     public void sendMailButtonChange();
     public void enableRegister();
     public void registerFinish();
+    public void setActionBar();
 }

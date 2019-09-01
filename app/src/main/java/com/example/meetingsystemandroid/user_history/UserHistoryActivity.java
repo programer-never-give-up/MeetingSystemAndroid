@@ -1,10 +1,12 @@
 package com.example.meetingsystemandroid.user_history;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +22,6 @@ public class UserHistoryActivity extends AppCompatActivity implements IUserHisto
     @BindView(R.id.user_history_list)
     RecyclerView mHistoryList;
 
-    @BindView(R.id.user_history_attend_or_organize)
-    TextView mUserHistoryTitle;
 
     private UserHistoryListAdapter mAdapter;
 
@@ -31,6 +31,8 @@ public class UserHistoryActivity extends AppCompatActivity implements IUserHisto
     private UserHistoryPresenter mPresenter;
 
     public static final String USER_HISTORY_TAG = "type";
+
+    private int mType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +44,8 @@ public class UserHistoryActivity extends AppCompatActivity implements IUserHisto
         mHistoryList.setAdapter(mAdapter);
 
         // 初始化数据
-        int type = getIntent().getIntExtra(USER_HISTORY_TAG, 0);
-        mPresenter.init(type);
-    }
-
-    @Override
-    public void setTitle(String title) {
-        mUserHistoryTitle.setText(title);
+        mType = getIntent().getIntExtra(USER_HISTORY_TAG, 0);
+        mPresenter.init(mType);
     }
 
     @Override
@@ -60,5 +57,26 @@ public class UserHistoryActivity extends AppCompatActivity implements IUserHisto
     @Override
     public void onFailed() {
         Toast.makeText(this,"请求失败", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setActionBarTitle(String title) {
+        ActionBar bar = getSupportActionBar();
+        if (bar != null) {
+            bar.setTitle(title);
+            // 设置返回按钮
+            bar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    // 设置顶部导航栏返回按钮的监听事件
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:// 点击返回图标事件
+                this.finish();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

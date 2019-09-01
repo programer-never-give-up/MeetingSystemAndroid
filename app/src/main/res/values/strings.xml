@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">activitySystemAndroid</string>
+    <string name="app_name">PNG</string>
     <string name="personal_center">个人中心</string>
     <string name="home">主页</string>
     <string name="activity_manager">活动管理</string>
@@ -63,4 +63,8 @@
     <string name="manager_activity_publish">发布</string>
     <string name="manager_activity_detail">查看详情</string>
     <string name="manager_activity_scan">入场扫描</string>
+    <string name="management_organize_finished">已结束</string>
+    <string name="management_organize_in_check">待审核</string>
+    <string name="main">主页</string>
+    <string name="activity_info">活动详情</string>
 </resources>

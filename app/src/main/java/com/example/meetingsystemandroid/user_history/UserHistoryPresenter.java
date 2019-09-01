@@ -28,10 +28,10 @@ public class UserHistoryPresenter implements IUserHistoryPresenter {
     @Override
     public void init(int typeId) {
         if (typeId == UserHistoryActivity.ORGANIZE_HISTORY) {
-            mView.setTitle("举办历史");
+            mView.setActionBarTitle("举办历史");
             getUserOrganizeHistory();
         } else {
-            mView.setTitle("参会历史");
+            mView.setActionBarTitle("参会历史");
             getUserAttendHistory();
         }
     }

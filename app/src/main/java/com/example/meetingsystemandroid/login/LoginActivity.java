@@ -1,5 +1,6 @@
 package com.example.meetingsystemandroid.login;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,6 +49,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
         ButterKnife.bind(this);
         mLoginPresenter = new LoginPresenterCompl(this, this);
         mLoginPresenter.autoLogin();
+        setActionBarTitle();
     }
 
     @OnClick(R.id.btn_login)
@@ -124,5 +126,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView{
     public void closeLogin() {
         finish();
     }
+
+    @Override
+    public void setActionBarTitle() {
+        ActionBar bar = getSupportActionBar();
+        if (bar != null) {
+            bar.setTitle(R.string.login);
+        }
+    }
+
 
 }
