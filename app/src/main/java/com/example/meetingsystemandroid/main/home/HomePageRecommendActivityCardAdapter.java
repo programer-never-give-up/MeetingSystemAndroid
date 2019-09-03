@@ -65,7 +65,7 @@ public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<H
         void setActivityInfo(Context context) {
             // 动态加载图片
             Glide.with(context)
-                    .load("http://139.219.14.146:8001/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png")
+                    .load("http://139.219.14.146:8001/default.jpg")
                     .into(mActivityLogo);
             mActivityName.setText("东南大学九龙湖校区软件发布会");
             mActivityLocation.setText("江苏 南京");

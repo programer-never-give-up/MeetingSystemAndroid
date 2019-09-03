@@ -75,6 +75,8 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
         Button mScanButton;
 
         private String mActivityId;
+        private String mActivityLogo;
+        private String mName;
 
         public ActivityListItem(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +85,8 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
         // 为了调试界面效果，先去除参数 ManagerResponseBean.ActivityInfo info
         public void setActivityCard(String type, ManagerResponseBean.ActivityInfo info) {
             mActivityId = info.getId();
+            mActivityLogo = info.getLogoSrc();
+            mName = info.getActivityName();
             mActivityName.setText(info.getActivityName());
             mActivityStartTime.setText(info.getStartTime());
             // 设置删除按钮
@@ -97,6 +101,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
                 mScanButton.setVisibility(View.GONE);
             }
             // 参加者查看二维码按钮
+            // 为了测试注释掉了
             if (!type.equals(ManagerActivity.ATTEND_PROCESSING) && !type.equals(ManagerActivity.ATTEND_NOT_START)) {
                 mViewTickectButton.setVisibility(View.GONE);
             }
@@ -121,7 +126,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
         // 查看入场门票
         @OnClick(R.id.manager_activity_view_ticket)
         public void onClickViewTicket() {
-            mPresenter.getTicket(mActivityId);
+            mPresenter.getTicket(mActivityId, mName, mActivityLogo);
         }
 
         // 查看活动详情

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.example.meetingsystemandroid.activity_info.ShowActivityInfoActivity;
+import com.example.meetingsystemandroid.show_ticket.ShowTicketActivity;
 import com.example.meetingsystemandroid.utils.RetrofitClient;
 
 import retrofit2.Call;
@@ -69,8 +70,13 @@ public class ManagerPresenter implements IMangerPresenter{
     }
 
     @Override
-    public void getTicket(String id) {
+    public void getTicket(String id, String name, String logo) {
         // 获取门票信息 弹框显示
+        Intent intent = new Intent(mContext, ShowTicketActivity.class);
+        intent.putExtra(ShowTicketActivity.TICKET_ACTIVITY_ID, id);
+        intent.putExtra(ShowTicketActivity.TICKET_ACTIVITY_LOGO, logo);
+        intent.putExtra(ShowTicketActivity.TICKET_ACTIVITY_NAME, name);
+        mContext.startActivity(intent);
     }
 
     @Override
