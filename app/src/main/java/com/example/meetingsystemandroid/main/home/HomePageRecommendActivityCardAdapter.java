@@ -16,23 +16,29 @@ import com.example.meetingsystemandroid.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomePageActivityCardAdapter extends RecyclerView.Adapter<HomePageActivityCardAdapter.ActivityCardViewHolder> {
+public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<HomePageRecommendActivityCardAdapter.RecommendActivityCardViewHolder> {
 
     private Context mContext;
+    private HomePagePresenter mPrensenter;
 
-    public HomePageActivityCardAdapter(Context context) {
+    public HomePageRecommendActivityCardAdapter(Context context, HomePagePresenter presenter) {
         this.mContext = context;
+        mPrensenter = presenter;
     }
     @NonNull
     @Override
-    public ActivityCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.recycler_home_activtity_item, parent, false);
-        return new ActivityCardViewHolder(view);
+    public RecommendActivityCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.recycler_home_recommend_activtity_item, parent, false);
+        return new RecommendActivityCardViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ActivityCardViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecommendActivityCardViewHolder holder, int position) {
         holder.setActivityInfo(mContext);
+    }
+
+    public void addRecommendActivities() {
+        // 留下函数之后填充
     }
 
     @Override
@@ -40,7 +46,7 @@ public class HomePageActivityCardAdapter extends RecyclerView.Adapter<HomePageAc
         return 5;
     }
 
-     class ActivityCardViewHolder extends RecyclerView.ViewHolder  {
+     class RecommendActivityCardViewHolder extends RecyclerView.ViewHolder  {
 
         @BindView(R.id.activity_card_activty_name)
         TextView mActivityName;
@@ -51,12 +57,12 @@ public class HomePageActivityCardAdapter extends RecyclerView.Adapter<HomePageAc
         @BindView(R.id.activity_card_logo)
         ImageView mActivityLogo;
 
-        private ActivityCardViewHolder(@NonNull View itemView) {
+        RecommendActivityCardViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
         // 传入Activity对象
-        public void setActivityInfo(Context context) {
+        void setActivityInfo(Context context) {
             // 动态加载图片
             Glide.with(context)
                     .load("http://139.219.14.146:8001/avatar/227af7b8-c7fc-11e9-ba32-887873aca633.png")

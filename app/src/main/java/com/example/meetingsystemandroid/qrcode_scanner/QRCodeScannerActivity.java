@@ -25,8 +25,9 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class QRCodeScannerActivity extends AppCompatActivity implements QRCodeView.Delegate, EasyPermissions.PermissionCallbacks,IQRCodeScannerView {
 
-    private static final String TAG = QRCodeScannerActivity.class.getSimpleName();
+
     public static final int REQUEST_CODE_QRCODE_PERMISSIONS = 1;
+    public static final String QRCODE_TAG = "id";
 
     @BindView(R.id.zxingview)
     ZXingView mZXingView;
@@ -44,6 +45,7 @@ public class QRCodeScannerActivity extends AppCompatActivity implements QRCodeVi
         mZXingView.setDelegate(this);
         mPresenter = new QRCodeScannerPresenter(this, this);
         mPresenter.requestQRCodePermissions();
+        mActivityId = getIntent().getStringExtra(QRCODE_TAG);
         setActionBar();
     }
 
