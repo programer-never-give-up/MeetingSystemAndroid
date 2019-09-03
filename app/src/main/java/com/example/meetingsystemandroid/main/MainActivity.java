@@ -1,6 +1,7 @@
 package com.example.meetingsystemandroid.main;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -80,6 +81,12 @@ public class MainActivity extends AppCompatActivity{
         getUserInfo();
     }
 
+    private void setActionBar() {
+        ActionBar bar = getSupportActionBar();
+        if (bar != null) {
+            bar.setTitle(R.string.main);
+        }
+    }
     private void getUserInfo() {
         Retrofit retrofit = RetrofitClient.getInstance(this);
         IMainApi api = retrofit.create(IMainApi.class);
