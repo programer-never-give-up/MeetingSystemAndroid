@@ -5,4 +5,8 @@ public interface IShowActivityPresenter {
    public void setActivity(String id);
 
    public void downloadActivityFile(String filePath);
+
+   public void attendActivity(String id);
+
+   public void collectActivity(String id);
 }

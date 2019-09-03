@@ -67,4 +67,5 @@
     <string name="management_organize_in_check">待审核</string>
     <string name="main">主页</string>
     <string name="activity_info">活动详情</string>
+    <string name="collect_activity">收藏</string>
 </resources>

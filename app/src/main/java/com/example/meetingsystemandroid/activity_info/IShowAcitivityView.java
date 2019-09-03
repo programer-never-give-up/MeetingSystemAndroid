@@ -8,4 +8,7 @@ public interface IShowAcitivityView {
     public void onGetInfoFailed();
 
     public void setActionBarTitle();
+
+    // 跳转到登录界面
+    public void toLogin();
 }

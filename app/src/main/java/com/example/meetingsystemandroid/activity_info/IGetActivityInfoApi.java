@@ -1,8 +1,6 @@
 package com.example.meetingsystemandroid.activity_info;
 
 
-import android.support.v4.media.session.PlaybackStateCompat;
-
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -17,4 +15,11 @@ public interface IGetActivityInfoApi {
 //    @FormUrlEncoded
 //    @POST("api/activity/showActivity/")
 //    Call<ActivityBean> getActivityInfo(@Field("uuid") String uuid);
+    @FormUrlEncoded
+    @POST("api/yw/apply/")
+    Call<ApplyAndCollectResponseBean> apply(@Field("uuid_act") String id);
+
+    @FormUrlEncoded
+    @POST("api/yw/collect/")
+    Call<ApplyAndCollectResponseBean> collect(@Field("uuid_act") String id);
 }

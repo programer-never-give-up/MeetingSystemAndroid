@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -13,12 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.meetingsystemandroid.R;
+import com.example.meetingsystemandroid.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ShowActivityInfoActivity extends AppCompatActivity implements IShowAcitivityView{
 
@@ -40,6 +43,7 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
     public static final String SHOW_ACTIVITY_TAG = "id";
     private ShowFileListAdapter mAdapter;
     private ShowActivityPresenter mPresenter;
+    private String mActivityId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,8 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
         mFileList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mFileList.setAdapter(mAdapter);
         mFileList.setNestedScrollingEnabled(false);
-        mPresenter.setActivity(getIntent().getStringExtra(SHOW_ACTIVITY_TAG));
+        mActivityId = getIntent().getStringExtra(SHOW_ACTIVITY_TAG);
+        mPresenter.setActivity(mActivityId);
         setActionBarTitle();
     }
 
@@ -82,6 +87,12 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
     }
 
     @Override
+    public void toLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:// 点击返回图标事件
@@ -89,5 +100,16 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    // 参加会议
+    @OnClick(R.id.btn_show_activity_attend)
+    void attendActivity() {
+        mPresenter.attendActivity(mActivityId);
+    }
+
+    @OnClick(R.id.btn_show_activity_collect)
+    void collectActivity() {
+        mPresenter.collectActivity(mActivityId);
     }
 }
