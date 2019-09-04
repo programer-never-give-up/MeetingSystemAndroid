@@ -47,6 +47,7 @@ public class HomePageFragment extends Fragment implements IHomePageView{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter = new HomePagePresenter(this, getContext());
         mRecommendAdapter = new HomePageRecommendActivityCardAdapter(getContext(), mPresenter);
         mRecentAdapter = new HomePageRecentActivityCardAdapter(getContext(), mPresenter);
     }
@@ -57,7 +58,6 @@ public class HomePageFragment extends Fragment implements IHomePageView{
         View v = inflater.inflate(R.layout.fragment_home_page, container, false);
         unbinder = ButterKnife.bind(this, v);
         setRecyclerView();
-        mPresenter = new HomePagePresenter(this, getContext());
         return v;
     }
 

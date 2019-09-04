@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -89,6 +90,10 @@ public class HomePageRecentActivityCardAdapter extends RecyclerView.Adapter<Home
 
         @OnClick(R.id.recent_activity_card_activty_click)
         public void toActivityInfo() {
+            if (mPresenter == null) {
+                Toast.makeText(mContext, "presenter null", Toast.LENGTH_SHORT).show();
+                return;
+            }
             mPresenter.toActivityInfo(mActivityId);
         }
     }

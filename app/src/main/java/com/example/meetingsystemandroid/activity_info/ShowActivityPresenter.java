@@ -3,6 +3,7 @@ package com.example.meetingsystemandroid.activity_info;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.meetingsystemandroid.model.User;

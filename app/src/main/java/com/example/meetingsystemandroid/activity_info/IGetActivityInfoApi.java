@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface IGetActivityInfoApi {
-    @GET("api/activity/showActivity")
+    @GET("api/activity/showActivity/")
     Call<ActivityBean> getActivityInfo(@Query("uuid") String uuid);
 //
 //    @FormUrlEncoded
