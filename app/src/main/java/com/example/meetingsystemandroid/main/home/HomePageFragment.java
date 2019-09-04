@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.meetingsystemandroid.R;
 
@@ -46,12 +47,16 @@ public class HomePageFragment extends Fragment implements IHomePageView{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mRecommendAdapter = new HomePageRecommendActivityCardAdapter(getContext(), mPresenter);
+        mRecentAdapter = new HomePageRecentActivityCardAdapter(getContext(), mPresenter);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home_page, container, false);
+        unbinder = ButterKnife.bind(this, v);
+        setRecyclerView();
         mPresenter = new HomePagePresenter(this, getContext());
         return v;
     }
@@ -59,18 +64,17 @@ public class HomePageFragment extends Fragment implements IHomePageView{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        unbinder = ButterKnife.bind(this, view);
-        setRecyclerView();
-        mPresenter.getRecentActivies();
+
+        if (mRecentAdapter.isNeedUpdate()) {
+            mPresenter.getRecentActivies();
+        }
     }
 
     private void setRecyclerView() {
-        mRecommendAdapter = new HomePageRecommendActivityCardAdapter(getContext(), mPresenter);
         mRecommendActivityList.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecommendActivityList.setAdapter(mRecommendAdapter);
         mRecommendActivityList.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
         mRecommendActivityList.setNestedScrollingEnabled(false);
-        mRecentAdapter = new HomePageRecentActivityCardAdapter(getContext(), mPresenter);
         mRecentActivityList.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecentActivityList.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
         mRecentActivityList.setAdapter(mRecentAdapter);
@@ -95,6 +99,7 @@ public class HomePageFragment extends Fragment implements IHomePageView{
 
     @Override
     public void updateRecentActivities(RecentActivitiesBean bean) {
+        mRecentAdapter.setNeedUpdate(false);
         mRecentAdapter.addRecentActivities(new ArrayList<RecentActivitiesBean.RecentActivity>(Arrays.asList(bean.getList_activity())));
         mRecentAdapter.notifyDataSetChanged();
     }

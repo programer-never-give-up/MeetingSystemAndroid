@@ -20,6 +20,15 @@ public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<H
 
     private Context mContext;
     private HomePagePresenter mPrensenter;
+    private boolean isNeedUpdate = false;
+
+    public boolean isNeedUpdate() {
+        return isNeedUpdate;
+    }
+
+    public void setNeedUpdate(boolean needUpdate) {
+        isNeedUpdate = needUpdate;
+    }
 
     public HomePageRecommendActivityCardAdapter(Context context, HomePagePresenter presenter) {
         this.mContext = context;

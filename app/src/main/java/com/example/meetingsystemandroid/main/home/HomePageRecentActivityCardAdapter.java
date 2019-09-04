@@ -25,6 +25,15 @@ public class HomePageRecentActivityCardAdapter extends RecyclerView.Adapter<Home
     private Context mContext;
     private HomePagePresenter mPresenter;
     private ArrayList<RecentActivitiesBean.RecentActivity> mList;
+    private boolean isNeedUpdate = true;
+
+    public boolean isNeedUpdate() {
+        return isNeedUpdate;
+    }
+
+    public void setNeedUpdate(boolean needUpdate) {
+        isNeedUpdate = needUpdate;
+    }
 
     HomePageRecentActivityCardAdapter(Context context, HomePagePresenter presenter) {
         mContext = context;
@@ -47,6 +56,7 @@ public class HomePageRecentActivityCardAdapter extends RecyclerView.Adapter<Home
     public void addRecentActivities(ArrayList<RecentActivitiesBean.RecentActivity> list) {
         mList.addAll(list);
     }
+
 
     @Override
     public int getItemCount() {

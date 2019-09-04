@@ -8,6 +8,6 @@ public interface IMainApi {
     @GET("api/check/")
     Call<LoginCheckResponseBean> checkLogin();
 
-    @GET("api/personal_center/showInfo")
+    @GET("api/personal_center/showInfo/")
     Call<UserBean> getUserInfo();
 }

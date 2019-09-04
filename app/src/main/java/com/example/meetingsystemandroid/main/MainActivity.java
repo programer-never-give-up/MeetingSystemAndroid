@@ -5,11 +5,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.meetingsystemandroid.R;
+import com.example.meetingsystemandroid.login.ILoginApi;
+import com.example.meetingsystemandroid.login.LoginResponseBean;
 import com.example.meetingsystemandroid.main.search.SearchFragment;
 import com.example.meetingsystemandroid.main.home.HomePageFragment;
 import com.example.meetingsystemandroid.main.management.MeetingManagerFragment;
@@ -78,7 +82,8 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
-        getUserInfo();
+        setActionBar();
+        autoLogin();
     }
 
     private void setActionBar() {
@@ -87,6 +92,35 @@ public class MainActivity extends AppCompatActivity{
             bar.setTitle(R.string.main);
         }
     }
+
+    // 自动登录
+    private void autoLogin() {
+        SharedPreferences sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
+        String username = sharedPreferences.getString("username", "");
+        assert username != null;
+        if (!username.equals("")) {
+            String password = sharedPreferences.getString("password","");
+            Retrofit retrofit = RetrofitClient.getInstance(this);
+            ILoginApi api = retrofit.create(ILoginApi.class);
+            Call<LoginResponseBean> call = api.login(username, password);
+            call.enqueue(new Callback<LoginResponseBean>() {
+                @Override
+                public void onResponse(Call<LoginResponseBean> call, Response<LoginResponseBean> response) {
+                    LoginResponseBean bean = response.body();
+                    if (bean == null || bean.isStatus()) {
+                        Toast.makeText(MainActivity.this, "自动登录失败", Toast.LENGTH_SHORT).show();
+                    }
+                    getUserInfo();
+                }
+
+                @Override
+                public void onFailure(Call<LoginResponseBean> call, Throwable t) {
+                    getUserInfo();
+                }
+            });
+        }
+    }
+
     private void getUserInfo() {
         Retrofit retrofit = RetrofitClient.getInstance(this);
         IMainApi api = retrofit.create(IMainApi.class);
