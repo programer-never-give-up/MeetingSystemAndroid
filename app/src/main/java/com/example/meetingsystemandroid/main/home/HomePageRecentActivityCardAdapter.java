@@ -18,6 +18,7 @@ import com.example.meetingsystemandroid.utils.RetrofitClient;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class HomePageRecentActivityCardAdapter extends RecyclerView.Adapter<HomePageRecentActivityCardAdapter.RecentActivityCardViewHolder> {
@@ -76,10 +77,11 @@ public class HomePageRecentActivityCardAdapter extends RecyclerView.Adapter<Home
 
         public RecentActivityCardViewHolder(@NonNull View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         public void setRecentActivityCard(RecentActivitiesBean.RecentActivity bean) {
-            Glide.with(itemView).load(RetrofitClient.BASE_URL + mLogo).into(mLogo);
+            Glide.with(mContext).load(RetrofitClient.BASE_URL + bean.getLogo()).into(mLogo);
             mActivityId = bean.getUuid_act();
             mActivityName.setText(bean.getName_act());
             mActivityTime.setText(bean.getStart_time());

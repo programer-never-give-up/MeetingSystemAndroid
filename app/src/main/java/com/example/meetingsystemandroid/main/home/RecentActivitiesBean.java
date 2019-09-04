@@ -23,6 +23,16 @@ public class RecentActivitiesBean {
     class RecentActivity {
         private String uuid_act;
         private String name_act;
+
+        public String getLogo() {
+            return logo;
+        }
+
+        public void setLogo(String logo) {
+            this.logo = logo;
+        }
+
+        private String logo;
         private String start_time;
         private String end_time;
 

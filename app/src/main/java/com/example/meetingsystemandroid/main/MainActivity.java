@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity{
 
     // 自动登录
     private void autoLogin() {
+        User user = User.getInstance();
+        if (user.getType() != User.UserType.VISITOR) {
+            return;
+        }
         SharedPreferences sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
         String username = sharedPreferences.getString("username", "");
         assert username != null;
@@ -107,7 +111,7 @@ public class MainActivity extends AppCompatActivity{
                 @Override
                 public void onResponse(Call<LoginResponseBean> call, Response<LoginResponseBean> response) {
                     LoginResponseBean bean = response.body();
-                    if (bean == null || bean.isStatus()) {
+                    if (bean == null || !bean.isStatus()) {
                         Toast.makeText(MainActivity.this, "自动登录失败", Toast.LENGTH_SHORT).show();
                     }
                     getUserInfo();
