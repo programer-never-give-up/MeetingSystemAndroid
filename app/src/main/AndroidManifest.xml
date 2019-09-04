@@ -21,11 +21,6 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
         <activity android:name=".show_ticket.ShowTicketActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".qrcode_scanner.QRCodeScannerActivity"/>
         <activity android:name=".activity_manager.ManagerActivity" />
@@ -39,7 +34,11 @@
             android:label="@string/register" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

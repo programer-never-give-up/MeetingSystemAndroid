@@ -11,15 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.meetingsystemandroid.R;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SearchActivityAdapter extends RecyclerView.Adapter<SearchActivityAdapter.SearchItemViewHolder> {
+public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAdapter.SearchItemViewHolder> {
 
     private Context mContext;
+    private ArrayList<SearchResultBean.ActivityInfo> mList;
 
-    public SearchActivityAdapter(Context context) {
+    public SearchFragmentAdapter(Context context) {
         mContext = context;
+        mList = new ArrayList<>();
     }
     @NonNull
     @Override
@@ -34,6 +38,11 @@ public class SearchActivityAdapter extends RecyclerView.Adapter<SearchActivityAd
         holder.setActivityName("活动名称");
     }
 
+    public void updateActivitiesList(ArrayList<SearchResultBean.ActivityInfo> list) {
+        mList.clear();
+        mList.addAll(list);
+    }
+
     @Override
     public int getItemCount() {
         return 5;
@@ -44,6 +53,8 @@ public class SearchActivityAdapter extends RecyclerView.Adapter<SearchActivityAd
         @BindView(R.id.search_activity_item_name)
         TextView mActivityName;
 
+        private String mActivityId;
+
         public SearchItemViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -51,6 +62,9 @@ public class SearchActivityAdapter extends RecyclerView.Adapter<SearchActivityAd
 
         public void setActivityName(String name) {
             mActivityName.setText(name);
+        }
+        public void setActivityId(String id) {
+            mActivityId = id;
         }
     }
 }

@@ -37,7 +37,6 @@ public class ManagerPresenter implements IMangerPresenter{
                 } else {
                     mView.onFailed();
                 }
-                mView.onFailed();
             }
 
             @Override
