@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/recent_activity_card_activty_click"
@@ -22,9 +29,11 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true">
         <TextView
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_marginBottom="10dp"
             android:id="@+id/recent_activity_card_activty_name"
             tools:text="@string/tool_activity_name"/>
@@ -36,3 +45,4 @@
     </LinearLayout>
 
 </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -73,10 +73,10 @@ public class HomePageFragment extends Fragment implements IHomePageView{
     private void setRecyclerView() {
         mRecommendActivityList.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecommendActivityList.setAdapter(mRecommendAdapter);
-        mRecommendActivityList.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
+//        mRecommendActivityList.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
         mRecommendActivityList.setNestedScrollingEnabled(false);
         mRecentActivityList.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecentActivityList.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
+//        mRecentActivityList.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
         mRecentActivityList.setAdapter(mRecentAdapter);
         mRecentActivityList.setNestedScrollingEnabled(false);
     }
