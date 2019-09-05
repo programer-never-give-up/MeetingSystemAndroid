@@ -1,8 +1,8 @@
 package com.example.meetingsystemandroid.main.home;
 
-public class RecentActivitiesBean {
+public class HomePageActivitiesBean {
     private String message;
-    private RecentActivity[] list_activity;
+    private HomePageActivity[] list_activity;
 
     public String getMessage() {
         return message;
@@ -12,26 +12,18 @@ public class RecentActivitiesBean {
         this.message = message;
     }
 
-    public RecentActivity[] getList_activity() {
+    public HomePageActivity[] getList_activity() {
         return list_activity;
     }
 
-    public void setList_activity(RecentActivity[] list_activity) {
+    public void setList_activity(HomePageActivity[] list_activity) {
         this.list_activity = list_activity;
     }
 
-    class RecentActivity {
+    class HomePageActivity {
         private String uuid_act;
         private String name_act;
-
-        public String getLogo() {
-            return logo;
-        }
-
-        public void setLogo(String logo) {
-            this.logo = logo;
-        }
-
+        private String location;
         private String logo;
         private String start_time;
         private String end_time;
@@ -66,6 +58,22 @@ public class RecentActivitiesBean {
 
         public void setEnd_time(String end_time) {
             this.end_time = end_time;
+        }
+
+        public String getLogo() {
+            return logo;
+        }
+
+        public void setLogo(String logo) {
+            this.logo = logo;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public void setLocation(String location) {
+            this.location = location;
         }
     }
 }

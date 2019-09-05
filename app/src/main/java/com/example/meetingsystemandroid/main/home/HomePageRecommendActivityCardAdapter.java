@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.meetingsystemandroid.R;
+import com.example.meetingsystemandroid.utils.RetrofitClient;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +23,8 @@ public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<H
 
     private Context mContext;
     private HomePagePresenter mPrensenter;
-    private boolean isNeedUpdate = false;
+    private boolean isNeedUpdate = true;
+    private ArrayList<HomePageActivitiesBean.HomePageActivity> mList;
 
     public boolean isNeedUpdate() {
         return isNeedUpdate;
@@ -33,6 +37,7 @@ public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<H
     public HomePageRecommendActivityCardAdapter(Context context, HomePagePresenter presenter) {
         this.mContext = context;
         mPrensenter = presenter;
+        mList = new ArrayList<>();
     }
     @NonNull
     @Override
@@ -43,16 +48,17 @@ public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<H
 
     @Override
     public void onBindViewHolder(@NonNull RecommendActivityCardViewHolder holder, int position) {
-        holder.setActivityInfo(mContext);
+        holder.setActivityInfo(mList.get(position));
     }
 
-    public void addRecommendActivities() {
+    public void addRecommendActivities(ArrayList<HomePageActivitiesBean.HomePageActivity> list) {
         // 留下函数之后填充
+        mList.addAll(list);
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return mList.size();
     }
 
      class RecommendActivityCardViewHolder extends RecyclerView.ViewHolder  {
@@ -66,19 +72,22 @@ public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<H
         @BindView(R.id.activity_card_logo)
         ImageView mActivityLogo;
 
+        private String mActivityId;
+
         RecommendActivityCardViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
         // 传入Activity对象
-        void setActivityInfo(Context context) {
+        void setActivityInfo(HomePageActivitiesBean.HomePageActivity bean) {
             // 动态加载图片
-            Glide.with(context)
-                    .load("http://139.219.14.146:8001/default.jpg")
+            Glide.with(this.itemView)
+                    .load(RetrofitClient.BASE_URL + bean.getLogo())
                     .into(mActivityLogo);
-            mActivityName.setText("东南大学九龙湖校区软件发布会");
-            mActivityLocation.setText("江苏 南京");
-            mActivityTime.setText("2019-10-1 9:00");
+            mActivityName.setText(bean.getName_act());
+            mActivityLocation.setText(bean.getLocation());
+            mActivityTime.setText(bean.getStart_time());
+            mActivityId = bean.getUuid_act();
         }
     }
 }

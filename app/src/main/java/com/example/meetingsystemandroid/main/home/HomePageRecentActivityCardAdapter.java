@@ -1,7 +1,6 @@
 package com.example.meetingsystemandroid.main.home;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,7 @@ public class HomePageRecentActivityCardAdapter extends RecyclerView.Adapter<Home
 
     private Context mContext;
     private HomePagePresenter mPresenter;
-    private ArrayList<RecentActivitiesBean.RecentActivity> mList;
+    private ArrayList<HomePageActivitiesBean.HomePageActivity> mList;
     private boolean isNeedUpdate = true;
 
     public boolean isNeedUpdate() {
@@ -55,7 +54,7 @@ public class HomePageRecentActivityCardAdapter extends RecyclerView.Adapter<Home
         holder.setRecentActivityCard(mList.get(position));
     }
 
-    public void addRecentActivities(ArrayList<RecentActivitiesBean.RecentActivity> list) {
+    public void addRecentActivities(ArrayList<HomePageActivitiesBean.HomePageActivity> list) {
         mList.addAll(list);
     }
 
@@ -81,7 +80,7 @@ public class HomePageRecentActivityCardAdapter extends RecyclerView.Adapter<Home
             ButterKnife.bind(this, itemView);
         }
 
-        public void setRecentActivityCard(RecentActivitiesBean.RecentActivity bean) {
+        public void setRecentActivityCard(HomePageActivitiesBean.HomePageActivity bean) {
             Glide.with(mContext).load(RetrofitClient.BASE_URL + bean.getLogo()).into(mLogo);
             mActivityId = bean.getUuid_act();
             mActivityName.setText(bean.getName_act());

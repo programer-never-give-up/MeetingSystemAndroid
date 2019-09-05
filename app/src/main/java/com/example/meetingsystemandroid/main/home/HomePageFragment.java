@@ -6,15 +6,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.meetingsystemandroid.R;
 
@@ -68,6 +65,9 @@ public class HomePageFragment extends Fragment implements IHomePageView{
         if (mRecentAdapter.isNeedUpdate()) {
             mPresenter.getRecentActivies();
         }
+        if (mRecommendAdapter.isNeedUpdate()) {
+            mPresenter.getRecommendActivies();
+        }
     }
 
     private void setRecyclerView() {
@@ -98,13 +98,16 @@ public class HomePageFragment extends Fragment implements IHomePageView{
     }
 
     @Override
-    public void updateRecentActivities(RecentActivitiesBean bean) {
+    public void updateRecentActivities(HomePageActivitiesBean bean) {
         mRecentAdapter.setNeedUpdate(false);
-        mRecentAdapter.addRecentActivities(new ArrayList<RecentActivitiesBean.RecentActivity>(Arrays.asList(bean.getList_activity())));
+        mRecentAdapter.addRecentActivities(new ArrayList<HomePageActivitiesBean.HomePageActivity>(Arrays.asList(bean.getList_activity())));
         mRecentAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void updateRecommendActivities(RecommendAcivitiesBean bean) {
+    public void updateRecommendActivities(HomePageActivitiesBean bean) {
+        mRecommendAdapter.setNeedUpdate(false);
+        mRecommendAdapter.addRecommendActivities(new ArrayList<HomePageActivitiesBean.HomePageActivity>(Arrays.asList(bean.getList_activity())));
+        mRecommendAdapter.notifyDataSetChanged();
     }
 }

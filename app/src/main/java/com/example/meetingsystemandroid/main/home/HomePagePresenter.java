@@ -2,6 +2,8 @@ package com.example.meetingsystemandroid.main.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.meetingsystemandroid.activity_info.ShowActivityInfoActivity;
 import com.example.meetingsystemandroid.utils.RetrofitClient;
@@ -32,11 +34,11 @@ public class HomePagePresenter implements IHomePagePresenter{
     public void getRecentActivies() {
         Retrofit retrofit = RetrofitClient.getInstance(mContext);
         IHomePageApi api = retrofit.create(IHomePageApi.class);
-        Call<RecentActivitiesBean> call = api.getRecentActivities();
-        call.enqueue(new Callback<RecentActivitiesBean>() {
+        Call<HomePageActivitiesBean> call = api.getRecentActivities();
+        call.enqueue(new Callback<HomePageActivitiesBean>() {
             @Override
-            public void onResponse(Call<RecentActivitiesBean> call, Response<RecentActivitiesBean> response) {
-                RecentActivitiesBean bean = response.body();
+            public void onResponse(Call<HomePageActivitiesBean> call, Response<HomePageActivitiesBean> response) {
+                HomePageActivitiesBean bean = response.body();
                 if (bean != null) {
                     mView.updateRecentActivities(bean);
                 }
@@ -44,7 +46,7 @@ public class HomePagePresenter implements IHomePagePresenter{
             }
 
             @Override
-            public void onFailure(Call<RecentActivitiesBean> call, Throwable t) {
+            public void onFailure(Call<HomePageActivitiesBean> call, Throwable t) {
 
             }
         });
@@ -52,6 +54,25 @@ public class HomePagePresenter implements IHomePagePresenter{
 
     @Override
     public void getRecommendActivies() {
-        // 获取推荐活动 api还未定义
+        // 获取推荐活动
+        Retrofit retrofit = RetrofitClient.getInstance(mContext);
+        IHomePageApi api = retrofit.create(IHomePageApi.class);
+        Call<HomePageActivitiesBean> call = api.getRecommendActivities();
+        call.enqueue(new Callback<HomePageActivitiesBean>() {
+            @Override
+            public void onResponse(Call<HomePageActivitiesBean> call, Response<HomePageActivitiesBean> response) {
+                HomePageActivitiesBean bean = response.body();
+                if (bean != null) {
+                    Toast.makeText(mContext, bean.getMessage(), Toast.LENGTH_SHORT).show();
+                    mView.updateRecommendActivities(bean);
+                }
+                Log.d("abcasd", "onResponse: "+response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<HomePageActivitiesBean> call, Throwable t) {
+                Log.d("abcasd", "onResponse: "+ t.getMessage());
+            }
+        });
     }
 }
