@@ -1,15 +1,15 @@
 package com.example.meetingsystemandroid.show_ticket;
 
 public class QRCodeResponseBean {
-    private String QRcode;
+    private String qrcode;
     private String message;
 
-    public String getQRcode() {
-        return QRcode;
+    public String getQrcode() {
+        return qrcode;
     }
 
-    public void setQRcode(String QRcode) {
-        this.QRcode = QRcode;
+    public void setQrcode(String qrcode) {
+        this.qrcode = qrcode;
     }
 
     public String getMessage() {

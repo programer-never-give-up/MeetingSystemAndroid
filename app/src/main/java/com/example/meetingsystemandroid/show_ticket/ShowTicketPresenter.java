@@ -32,9 +32,11 @@ public class ShowTicketPresenter implements IShowTicketPresenter{
             public void onResponse(Call<QRCodeResponseBean> call, Response<QRCodeResponseBean> response) {
                 QRCodeResponseBean bean = response.body();
                 if (bean != null) {
-                    mView.setQRCode(bean.getQRcode());
+                    mView.setQRCode(bean.getQrcode());
+                } else {
+                    Toast.makeText(mContext, "请求二维码失败！", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(mContext, "请求二维码失败！", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override

@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.meetingsystemandroid.R;
 import com.example.meetingsystemandroid.login.LoginActivity;
+import com.example.meetingsystemandroid.utils.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,6 +66,9 @@ public class ShowActivityInfoActivity extends AppCompatActivity implements IShow
 
     @Override
     public void onGetInfoSuccess(ActivityBean bean) {
+        Glide.with(this)
+                .load(RetrofitClient.BASE_URL + bean.getLogo())
+                .into(mLogo);
         mLocation.setText(bean.getLocation());
         mTitle.setText(bean.getName());
         mOrganizer.setText(bean.getOrganizer());
