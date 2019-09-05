@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface ISearchApi {
-    @GET("api/yw/search")
-    Call<SearchResultBean> getSearchResult(@Query("key") String name);
+    @GET("api/yw/search/")
+    Call<SearchResultBean> getSearchResult(@Query("keyword") String name);
 }

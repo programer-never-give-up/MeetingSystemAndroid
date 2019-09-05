@@ -1,7 +1,10 @@
 package com.example.meetingsystemandroid.main.search;
 
 import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
 
+import com.example.meetingsystemandroid.activity_info.ShowActivityInfoActivity;
 import com.example.meetingsystemandroid.utils.RetrofitClient;
 
 import java.util.ArrayList;
@@ -31,6 +34,7 @@ public class SearchFragmentPresenter implements ISearchFragmentPrensenter {
             public void onResponse(Call<SearchResultBean> call, Response<SearchResultBean> response) {
                 SearchResultBean bean = response.body();
                 if (bean != null) {
+                    Toast.makeText(mContext, bean.getMessage(), Toast.LENGTH_SHORT).show();
                     mView.updateSearchResult(new ArrayList<SearchResultBean.ActivityInfo>(Arrays.asList(bean.getActivities())));
                 }
             }
@@ -40,5 +44,12 @@ public class SearchFragmentPresenter implements ISearchFragmentPrensenter {
 
             }
         });
+    }
+
+    @Override
+    public void toActivityInfo(String id) {
+        Intent intent = new Intent(mContext, ShowActivityInfoActivity.class);
+        intent.putExtra(ShowActivityInfoActivity.SHOW_ACTIVITY_TAG, id);
+        mContext.startActivity(intent);
     }
 }

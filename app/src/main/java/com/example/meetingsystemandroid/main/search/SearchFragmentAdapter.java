@@ -15,15 +15,18 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAdapter.SearchItemViewHolder> {
 
     private Context mContext;
     private ArrayList<SearchResultBean.ActivityInfo> mList;
+    private SearchFragmentPresenter mPresenter;
 
-    public SearchFragmentAdapter(Context context) {
+    public SearchFragmentAdapter(Context context, SearchFragmentPresenter presenter) {
         mContext = context;
         mList = new ArrayList<>();
+        mPresenter = presenter;
     }
     @NonNull
     @Override
@@ -35,17 +38,20 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
     @Override
     public void onBindViewHolder(@NonNull SearchItemViewHolder holder, int position) {
         // 先占位看效果 之后变成加载搜索结果
-        holder.setActivityName("活动名称");
+        SearchResultBean.ActivityInfo info = mList.get(position);
+        holder.setActivityName(info.getName_act());
+        holder.setActivityId(info.getUuid_act());
     }
 
     public void updateActivitiesList(ArrayList<SearchResultBean.ActivityInfo> list) {
         mList.clear();
         mList.addAll(list);
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return mList.size();
     }
 
     class SearchItemViewHolder extends RecyclerView.ViewHolder {
@@ -63,8 +69,13 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentAd
         public void setActivityName(String name) {
             mActivityName.setText(name);
         }
+
         public void setActivityId(String id) {
             mActivityId = id;
+        }
+        @OnClick(R.id.recycler_search_result)
+        public void showActivityInfo(){
+            mPresenter.toActivityInfo(mActivityId);
         }
     }
 }

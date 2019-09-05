@@ -49,7 +49,7 @@ public class SearchFragment extends Fragment implements ISearchFragmentView{
         unbinder = ButterKnife.bind(this, v);
         // init recyclerview
         mPresenter = new SearchFragmentPresenter(getContext(),this);
-        mAdapter = new SearchFragmentAdapter(getContext());
+        mAdapter = new SearchFragmentAdapter(getContext(), mPresenter);
         mSearchResult.setLayoutManager(new LinearLayoutManager(getContext()));
         mSearchResult.setAdapter(mAdapter);
         mSearchResult.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
@@ -63,7 +63,6 @@ public class SearchFragment extends Fragment implements ISearchFragmentView{
         mSearchInput.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(getContext(), query, Toast.LENGTH_SHORT).show();
                 mPresenter.search(query);
                 return true;
             }

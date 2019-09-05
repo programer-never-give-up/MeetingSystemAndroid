@@ -4,5 +4,5 @@ public interface ISearchFragmentPrensenter {
 
     public void search(String text);
 
-
+    public void toActivityInfo(String id);
 }
