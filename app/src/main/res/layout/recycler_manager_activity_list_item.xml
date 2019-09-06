@@ -18,7 +18,9 @@
         android:layout_centerVertical="true"
         android:textSize="20sp"
         android:id="@+id/manager_activity_list_item_name"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
         android:layout_height="wrap_content"
         android:text="@string/show_activity_title"/>
     <TextView

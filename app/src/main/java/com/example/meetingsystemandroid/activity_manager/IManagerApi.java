@@ -32,6 +32,6 @@ public interface IManagerApi {
     Call<CancelApplyOrCollectResponseBean> cancelApply(@Field("uuid_act") String id);
 
     @FormUrlEncoded
-    @POST("api/yw/cancelCollect/")
+    @POST("api/yw/cancelCollection/")
     Call<CancelApplyOrCollectResponseBean> cancelCollect(@Field("uuid_act") String id);
 }

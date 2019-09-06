@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<HomePageRecommendActivityCardAdapter.RecommendActivityCardViewHolder> {
 
@@ -88,6 +89,10 @@ public class HomePageRecommendActivityCardAdapter extends RecyclerView.Adapter<H
             mActivityLocation.setText(bean.getLocation());
             mActivityTime.setText(bean.getStart_time());
             mActivityId = bean.getUuid_act();
+        }
+        @OnClick(R.id.recycler_recommend_card)
+        public void onClickItem() {
+            mPrensenter.toActivityInfo(mActivityId);
         }
     }
 }

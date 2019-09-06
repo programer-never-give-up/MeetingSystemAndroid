@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.meetingsystemandroid.R;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,9 +57,12 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
     }
 
     public void deleteActivity(String id) {
-        for(ManagerActivityInfoResponseBean.ActivityInfo info: mActivityList) {
+        Iterator<ManagerActivityInfoResponseBean.ActivityInfo> iter = mActivityList.iterator();
+        while(iter.hasNext()) {
+            ManagerActivityInfoResponseBean.ActivityInfo info = iter.next();
             if (info.getId().equals(id)) {
-                mActivityList.remove(info);
+                iter.remove();
+                break;
             }
         }
     }
@@ -88,7 +92,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-        
+
         public void setActivityCard(String type, ManagerActivityInfoResponseBean.ActivityInfo info) {
             mActivityId = info.getId();
             mActivityLogo = info.getLogoSrc();

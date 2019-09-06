@@ -26,8 +26,6 @@ public class ManagerFragmentPresenter implements IManagerFragmentPresenter{
     @Override
     public void setFragmentUI() {
         User user = User.getInstance();
-        Log.d("调试tag", user.getUserName());
-        Log.d("调试tag", user.typeToString());
         if (user.getType() != User.UserType.COMPANY) {
             mView.disablePublishModule();
         }

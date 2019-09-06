@@ -42,10 +42,11 @@ public class QRCodeScannerActivity extends AppCompatActivity implements QRCodeVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode_scanner);
         ButterKnife.bind(this);
-        mZXingView.setDelegate(this);
-        mPresenter = new QRCodeScannerPresenter(this, this);
-        mPresenter.requestQRCodePermissions();
         mActivityId = getIntent().getStringExtra(QRCODE_TAG);
+        mZXingView.setDelegate(this);
+        mPresenter = new QRCodeScannerPresenter(this, this, mActivityId);
+        mPresenter.requestQRCodePermissions();
+
         setActionBar();
     }
 

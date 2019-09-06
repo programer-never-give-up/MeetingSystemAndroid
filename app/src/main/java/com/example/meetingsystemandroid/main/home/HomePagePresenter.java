@@ -66,12 +66,11 @@ public class HomePagePresenter implements IHomePagePresenter{
                     Toast.makeText(mContext, bean.getMessage(), Toast.LENGTH_SHORT).show();
                     mView.updateRecommendActivities(bean);
                 }
-                Log.d("abcasd", "onResponse: "+response.body().toString());
             }
 
             @Override
             public void onFailure(Call<HomePageActivitiesBean> call, Throwable t) {
-                Log.d("abcasd", "onResponse: "+ t.getMessage());
+
             }
         });
     }

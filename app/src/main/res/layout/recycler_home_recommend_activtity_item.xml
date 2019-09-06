@@ -8,7 +8,9 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recycler_recommend_card"
     android:orientation="vertical"
+    android:background="@drawable/personal_center_press_selector"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView

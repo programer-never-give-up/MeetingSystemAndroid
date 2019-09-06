@@ -4,11 +4,18 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
+import android.widget.CheckBox;
+
+import com.example.meetingsystemandroid.utils.RetrofitClient;
 
 import java.util.logging.LogRecord;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 import static java.lang.Thread.sleep;
 
@@ -16,10 +23,12 @@ public class QRCodeScannerPresenter implements IQRCodeScannerPresenter{
 
     private Context mContext;
     private IQRCodeScannerView mView;
+    private String mActivityId;
 
-    public QRCodeScannerPresenter(IQRCodeScannerView view, Context context) {
+    public QRCodeScannerPresenter(IQRCodeScannerView view, Context context, String id) {
         mContext = context;
         mView = view;
+        mActivityId = id;
     }
 
 
@@ -27,13 +36,28 @@ public class QRCodeScannerPresenter implements IQRCodeScannerPresenter{
     public void onScanSuccess(String id) {
         mView.showLoading();
         // 为了调试 延迟执行看效果 之后直接请求服务器
-        boolean handler = new Handler().postDelayed(new Runnable() {
+        Retrofit retrofit = RetrofitClient.getInstance(mContext);
+        IQRCodeScanApi api = retrofit.create(IQRCodeScanApi.class);
+        Call<CheckQRCodeResponseBean> call = api.checkQRCode(mActivityId, id);
+        call.enqueue(new Callback<CheckQRCodeResponseBean>() {
             @Override
-            public void run() {
-                mView.dismissLoading();
-                mView.showResult(false);
+            public void onResponse(Call<CheckQRCodeResponseBean> call, Response<CheckQRCodeResponseBean> response) {
+                CheckQRCodeResponseBean bean = response.body();
+                if (bean != null) {
+                    mView.dismissLoading();
+                    if (bean.isStatus()) {
+                        mView.showResult(true);
+                    } else {
+                        mView.showResult(false);
+                    }
+                }
             }
-        }, 3*1000);
+
+            @Override
+            public void onFailure(Call<CheckQRCodeResponseBean> call, Throwable t) {
+
+            }
+        });
     }
 
     @AfterPermissionGranted(QRCodeScannerActivity.REQUEST_CODE_QRCODE_PERMISSIONS)
