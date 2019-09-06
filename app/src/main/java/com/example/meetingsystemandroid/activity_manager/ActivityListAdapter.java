@@ -14,18 +14,16 @@ import com.example.meetingsystemandroid.R;
 
 import java.util.ArrayList;
 
-import butterknife.BindInt;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 
 public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapter.ActivityListItem> {
 
     private ManagerPresenter mPresenter;
     private Context mContext;
     private String mType;
-    private ArrayList<ManagerResponseBean.ActivityInfo> mActivityList;
+    private ArrayList<ManagerActivityInfoResponseBean.ActivityInfo> mActivityList;
 
     public ActivityListAdapter(Context context, ManagerPresenter presenter, String type) {
         mContext = context;
@@ -52,9 +50,17 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
 //        return 5;
     }
 
-    public void addActivities(ArrayList<ManagerResponseBean.ActivityInfo> activityList) {
+    public void addActivities(ArrayList<ManagerActivityInfoResponseBean.ActivityInfo> activityList) {
         mActivityList.addAll(activityList);
         notifyDataSetChanged();
+    }
+
+    public void deleteActivity(String id) {
+        for(ManagerActivityInfoResponseBean.ActivityInfo info: mActivityList) {
+            if (info.getId().equals(id)) {
+                mActivityList.remove(info);
+            }
+        }
     }
 
     class ActivityListItem extends RecyclerView.ViewHolder {
@@ -82,8 +88,8 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-        // 为了调试界面效果，先去除参数 ManagerResponseBean.ActivityInfo info
-        public void setActivityCard(String type, ManagerResponseBean.ActivityInfo info) {
+        
+        public void setActivityCard(String type, ManagerActivityInfoResponseBean.ActivityInfo info) {
             mActivityId = info.getId();
             mActivityLogo = info.getLogoSrc();
             mName = info.getActivityName();
@@ -114,7 +120,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
         // 删除活动或撤销审核
         @OnClick(R.id.manager_activity_delete)
         public void onClickDelete() {
-            mPresenter.onDelete(mType);
+            mPresenter.onDelete(mType, mActivityId);
         }
 
         // 未发布转为发布

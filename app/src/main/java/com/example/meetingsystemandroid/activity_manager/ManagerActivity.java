@@ -1,31 +1,15 @@
 package com.example.meetingsystemandroid.activity_manager;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
-import android.content.ReceiverCallNotAllowedException;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.Request;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.SizeReadyCallback;
-import com.bumptech.glide.request.target.Target;
-import com.bumptech.glide.request.transition.Transition;
 import com.example.meetingsystemandroid.R;
-import com.example.meetingsystemandroid.utils.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,12 +57,8 @@ public class ManagerActivity extends AppCompatActivity implements IManagerView{
     }
 
     @Override
-    public void setArrayList(ManagerResponseBean bean) {
-        mAdapter.addActivities(new ArrayList<ManagerResponseBean.ActivityInfo>(Arrays.asList(bean.getActivities())));
-    }
-
-    @Override
-    public void showTicket() {
+    public void setArrayList(ManagerActivityInfoResponseBean bean) {
+        mAdapter.addActivities(new ArrayList<ManagerActivityInfoResponseBean.ActivityInfo>(Arrays.asList(bean.getActivities())));
     }
 
     @Override
@@ -125,6 +105,12 @@ public class ManagerActivity extends AppCompatActivity implements IManagerView{
     @Override
     public void onFailed() {
         Toast.makeText(this, "请求失败", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void deleteActivityList(String id) {
+        mAdapter.deleteActivity(id);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

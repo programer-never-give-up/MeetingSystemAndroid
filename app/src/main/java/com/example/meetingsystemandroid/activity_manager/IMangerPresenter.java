@@ -6,7 +6,7 @@ public interface IMangerPresenter {
 
     public void showActivityInfo(String id);
 
-    public void onDelete(String type);
+    public void onDelete(String type, String id);
 
     public void publishActivity(String id); // 传入会议id
 

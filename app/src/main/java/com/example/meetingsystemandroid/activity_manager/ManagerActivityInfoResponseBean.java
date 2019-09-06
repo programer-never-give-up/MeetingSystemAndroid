@@ -2,7 +2,7 @@ package com.example.meetingsystemandroid.activity_manager;
 
 import com.example.meetingsystemandroid.model.Activity;
 
-public class ManagerResponseBean {
+public class ManagerActivityInfoResponseBean {
     private int pageNum;
     private ActivityInfo[] activities;
 
