@@ -163,5 +163,6 @@ public class QRCodeScannerActivity extends AppCompatActivity implements QRCodeVi
                     })
                     .show();
         }
+        mZXingView.startSpot();
     }
 }
