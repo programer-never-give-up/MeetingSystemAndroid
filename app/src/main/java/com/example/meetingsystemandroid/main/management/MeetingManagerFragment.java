@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 public class MeetingManagerFragment extends Fragment implements IManagerFragmentView{
@@ -51,21 +54,13 @@ public class MeetingManagerFragment extends Fragment implements IManagerFragment
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
         mPresenter = new ManagerFragmentPresenter(this, getContext());
+        mPresenter.setFragmentUI();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-    }
-
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-            mPresenter.setFragmentUI();
-        }
     }
 
     @Override
