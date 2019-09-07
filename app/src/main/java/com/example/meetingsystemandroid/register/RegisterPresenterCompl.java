@@ -42,16 +42,18 @@ public class RegisterPresenterCompl implements IRegisterPresenter {
             @Override
             public void onResponse(Call<RegisterResponseBean> call, Response<RegisterResponseBean> response) {
                 RegisterResponseBean bean = response.body();
-                if (bean.isStatus_username()) {
-                    toastMessage("用户名已被注册");
-                    return;
-                }
-                if (bean.isStatus()) {
-                    toastMessage("注册成功");
-                    mRegisterView.registerFinish();
-                } else {
-                    toastMessage(bean.getMessage());
-                    return;
+                if (bean != null) {
+                    if (bean.isStatus_username()) {
+                        toastMessage("用户名已被注册");
+                        return;
+                    }
+                    if (bean.isStatus()) {
+                        toastMessage("注册成功");
+                        mRegisterView.registerFinish();
+                    } else {
+                        toastMessage(bean.getMessage());
+                        return;
+                    }
                 }
 
             }
