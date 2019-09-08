@@ -109,6 +109,7 @@ public class QRCodeScannerActivity extends AppCompatActivity implements QRCodeVi
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         // 权限申请成功时打开摄像头
         mZXingView.startCamera();
+        mZXingView.startSpot();
     }
 
     @Override
